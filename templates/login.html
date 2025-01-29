@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="login-page">
+        <div class="form-container">
+            <h1 class="form-title">Login</h1>
+            <form method="POST" action="{{ url_for('auth.login') }}" class="login-form">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email" required class="input-field">
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required class="input-field">
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="flash-message {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
