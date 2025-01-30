@@ -60,6 +60,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 20px;
 }
 
 .submit-btn:hover {
@@ -82,10 +83,16 @@ body {
 
 .flash-message.success {
     background-color: #dff0d8;
-    color: #3c763d;
+    color: hsl(121, 33%, 35%);
 }
 
 .flash-message.info {
     background-color: #d9edf7;
     color: #31708f;
+}
+
+.forget{
+    color: #88a491;
+   margin-top: 30px;
+
 }

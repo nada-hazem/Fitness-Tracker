@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Running",
+        "type": "Cardio",
+        "description": "A high-intensity activity that improves cardiovascular health.",
+        "duration": 60,
+        "caloriesBurnedPerHour": 600,
+        "thumbnail": "../static/images/running.png"
+    },
+    {
+        "id": 2,
+        "name": "Yoga",
+        "type": "Flexibility",
+        "description": "A mind-body practice that enhances flexibility and relaxation.",
+        "duration": 45,
+        "caloriesBurnedPerHour": 200,
+        "thumbnail": "../static/images/yoga.png"
+    },
+    {
+        "id": 3,
+        "name": "Cycling",
+        "type": "Endurance",
+        "description": "A great low-impact workout for improving stamina and strength.",
+        "duration": 90,
+        "caloriesBurnedPerHour": 500,
+        "thumbnail": "../static/images/cycling.png"
+    },
+    {
+        "id": 4,
+        "name": "Swimming",
+        "type": "Full-body Workout",
+        "description": "A refreshing activity that works all muscle groups.",
+        "duration": 60,
+        "caloriesBurnedPerHour": 700,
+        "thumbnail": "../static/images/swimming.png"
+    },
+    {
+        "id": 5,
+        "name": "Weightlifting",
+        "type": "Strength",
+        "description": "Builds muscle and enhances overall body strength.",
+        "duration": 45,
+        "caloriesBurnedPerHour": 400,
+        "thumbnail": "../static/images/weightlifting.png"
+    }
+]

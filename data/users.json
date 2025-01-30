@@ -5,5 +5,89 @@
         "email": "nadaayoub362@gmail.com",
         "password": "$2b$12$ZKaGOIe3D7N3dRvUCUIESuqXpgv78BfwBztNIZNm33d1bCIR8c0P.",
         "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 2,
+        "username": "nada",
+        "email": "NM@gmail.com",
+        "password": "$2b$12$JLq1de.FsV71MTZY/X5K4.lXpalQ4vG47QyOYLpnseZ/N387FvpTC",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 3,
+        "username": "nn",
+        "email": "nnn@gfcfg.com",
+        "password": "$2b$12$fHLi14Lt2veiMfAzSpRd0urqSbGU7A2VA/BAZGcVTbRUJGbWyFQ2G",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 4,
+        "username": "NNN",
+        "email": "NHH@KK.COM",
+        "password": "$2b$12$OYkP3gfLokKnFLOZ8R3SHevAwAoTXNLIqObe/N6YcTYPkJD5hawaW",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 5,
+        "username": "mariem",
+        "email": "marieema@gmail.com",
+        "password": "$2b$12$yC8qgfcji/cFNHLT43DZ0.I0PCaSLHK1fJofzvEgHKxq760BvpKEG",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 6,
+        "username": "nada",
+        "email": "salma@gmail.com",
+        "password": "$2b$12$meQhEeoEX6nznNhXu3iimu8UAM4jb6ytWL.vvvwOSq695UvPXq5pu",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 7,
+        "username": "NANA",
+        "email": "HAHA2@gmail.com",
+        "password": "$2b$12$QX/WnyqKviXlGWU5n5.i1OMbM0FHFsjMq.ey.RH3ikhr9rKt1YTtK",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 8,
+        "username": "john_doe",
+        "email": "john.doe@example.com",
+        "password": "$2b$12$SARLeRFI6gGbAhnjqczWPuyKrtktnQ52LOmzKHYl3S9TGFSM8nJwC",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 9,
+        "username": "jane_doe",
+        "email": "mark@fake-domain.xyz",
+        "password": "$2b$12$TiaLk3H98cvlnDcooIsyzeTUNKDcDK6M0xoLCdSwv8Aqr3Ms4PBg6",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 10,
+        "username": "jane_doe",
+        "email": "janedoe@fake.com",
+        "password": "$2b$12$4hERZ/DMiXSVb7E4qbGDfOH4n5yQTSvvClqTrTfRiQ2s4a/iLCSgG",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 11,
+        "username": "nada",
+        "email": "nada@fake.com",
+        "password": "$2b$12$Ft6A/iscYfjUAWXh0QHFSO75YTgLyYu7qrQInX/3KzmSRVw0/kMGe",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 12,
+        "username": "nada",
+        "email": "haha@fake.com",
+        "password": "$2b$12$f05L7KYgsBRHhJ3ONmMBR.W1xq4qNHcgplfho4FLHU01pSveCxFm2",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 13,
+        "username": "nada",
+        "email": "marwa@gmail.com",
+        "password": "$2b$12$91nSx4Z5Zdqdsdn1Y1Vr3.f76A51mJcd7UXFC3XeApmWXxXW9Yfua",
+        "created_at": "2025-01-01T12:00:00Z"
     }
 ]

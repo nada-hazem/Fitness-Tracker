@@ -1,25 +1,14 @@
-from flask import Blueprint
-from flask import (
-    Flask,
-    request,
-    render_template,
-    redirect,
-    url_for,
-    flash,
-    jsonify,
-    session,
-)
+from flask import Blueprint, Flask, request, render_template, redirect, url_for, flash, jsonify, session
 import re
 from datetime import timedelta
 import json
 import bcrypt
+from email_validator import validate_email, EmailNotValidError
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 auth.permanent_session_lifetime = timedelta(days=2)
 
-
 PASSWORD_REGEX = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`])[A-Za-z\d!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`]{8,}$"
-
 
 # Function to validate password using regex
 def validate_password(password):
@@ -30,21 +19,26 @@ def validate_password(password):
         ]
     return []
 
-
-@auth.route("/home")
-def base():
-    return render_template("home.html")
-
+def is_valid_email(email):
+    try:
+        # Validate email using email_validator
+        validate_email(email, check_deliverability=True)
+        return True
+    except EmailNotValidError as e:
+        flash(f"Invalid email: {e}", "error")
+        return False
 
 def load_users():
     with open("data/users.json", "r") as f:
         return json.load(f)
 
-
 def save_users(users):
     with open("data/users.json", "w") as f:
         json.dump(users, f, indent=4)
 
+@auth.route("/home")
+def base():
+    return render_template("home.html")
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -53,6 +47,10 @@ def signup():
         username = request.form.get("username", "").strip()
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
+
+        # Email validation
+        if not is_valid_email(email):
+            return redirect(url_for("auth.signup"))
 
         # Password validation using regex
         password_errors = validate_password(password)
@@ -97,7 +95,7 @@ def signup():
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        print("post")
+     
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
@@ -128,8 +126,31 @@ def login():
         if "user" in session:
             return redirect(url_for("auth.base"))
         return render_template("login.html")
+    
+
+# @auth.route("/reset_password" , methods=["GET", "POST"])
+# def reset_password():
+#     if request.method == "POST":
+#         email = request.form.get("email", "").strip()
+
+#         if not is_valid_email(email):
+#             flash( "Invalid email addreess","error")
+#             return redirect (url_for("auth.forget"))
+#     users=load_users()
+#     user = next((u for u in users if u["email"] == email), None)
+#     if not user:
+#         flash("No account found with this email address.", "error")
+#         return redirect(url_for("auth.reset_password"))
+#     return render_template("forget.html")
+
 
 @auth.route("/logout")
-def logout ():
+def logout():
     session.clear()
     return redirect(url_for('auth.login'))
+
+@auth.route("/test_flash")
+def test_flash():
+
+    flash("This is a test flash message!", "success")
+    return redirect(url_for("auth.login"))

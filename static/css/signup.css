@@ -18,10 +18,12 @@ h1 {
     font-weight: bold;
     margin: 0;
 }
-.create{
-    color : #44a491;
-    font-family:Georgia, 'Times New Roman', Times, serif
+
+.create {
+    color: #44a491;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 p {
     font-size: 14px;
     font-weight: 100;
@@ -36,9 +38,9 @@ p {
     box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
     position: relative;
     overflow: hidden;
-    width: 768px;
+    width: 800px;
     max-width: 100%;
-    min-height: 700px;
+    min-height: 690px;
     display: flex;
 }
 
@@ -48,10 +50,9 @@ p {
     justify-content: center;
     align-items: center;
     text-align: center;
-  
-    
 }
-#signupForm{
+
+#signupForm {
     padding-top: 150px;
 }
 
@@ -61,38 +62,28 @@ p {
     padding: 12px 15px 20px;
     margin: 8px 0;
     width: 290px;
-
 }
+
 .formContainer label {
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
-    color:gray;
-    font-family:'SF Pro', sans-serif;
-    font-size:15px;
+    color: gray;
+    font-family: 'SF Pro', sans-serif;
+    font-size: 15px;
 }
 
-.signBtn{
+.signBtn {
     border-radius: 20px;
-    border: 1px solid  #44a491;
-    background:  #44a491;
+    border: 1px solid #44a491;
+    background: #44a491;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
     text-transform: uppercase;
     margin-top: 70px;
-}
-.signInBtn{
-    border-radius: 20px;
-    border: 1px solid  #44a491;
-    background:  #44a491;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    text-transform: uppercase;
-    margin-top: 70px;
+    cursor: pointer;
 }
 
 /* Flash Messages */
@@ -102,11 +93,6 @@ p {
     text-align: center;
 }
 
-.flash-messages {
-    list-style: none;
-    padding: 0;
-}
-
 .flash-message {
     display: inline-block;
     padding: 10px 20px;
@@ -114,6 +100,8 @@ p {
     font-size: 14px;
     margin: 10px auto;
     text-align: center;
+    list-style: none;
+    padding: 0;
 }
 
 /* Success Flash Message */
@@ -143,34 +131,35 @@ p {
     color: #856404;
     border: 1px solid #ffeeba;
 }
+
 button:active {
     transform: scale(.95);
 }
 
 button:focus {
-    outline: none;
+    outline: #721c24
 }
 
 
 .ghost {
     background: transparent;
     border-color: #fff;
+
 }
-.signIn{
-    padding-top: 158px;
-}
-.formContainer {
+
+
+/* .formContainer {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all .6s ease-in-out;
-}
+} */
 
-.signInContainer {
+/* .signInContainer {
     left: 0;
     width: 50%;
     z-index: 2;
-}
+} */
 
 .signUpContainer {
     left: 0;
@@ -186,12 +175,12 @@ button:focus {
     width: 50%;
     height: 100%;
     overflow: hidden;
-    transition: transform .6s ease-in-out;
+    /* transition: transform .6s ease-in-out; */
     z-index: 100;
 }
 
 .overlay {
-    background: #ff416c;
+
     background: linear-gradient(to right, #44a491, #2b739d) no-repeat 0 0 / cover;
     color: #fff;
     position: relative;
@@ -213,24 +202,18 @@ button:focus {
     height: 100%;
     width: 50%;
     text-align: center;
- 
+
 }
 
-.overlayRight {
+/* .overlayRight {
     right: 0;
     transform: translateY(0);
-}
-.welcome{
+} */
+
+.welcome {
     padding-top: 90px;
 }
 
-.overlayLeft {
-    transform: translateY(-20%);
-}
-
-.container.rightPanelActive .signInContainer {
-    transform: translateY(100%);
-}
 
 .container.rightPanelActive .overlayContainer {
     transform: translateX(-100%);
@@ -246,12 +229,57 @@ button:focus {
     transform: translateX(50%);
 }
 
-/* Bring back the text to center */
-.container.rightPanelActive .overlayLeft {
-    transform: translateY(0);
+
+
+
+
+#password-requirements {
+    list-style-type: none;
+    padding: 0;
+    color: #ccdbdc;
+
 }
 
-/* Same effect for right */
-.container.rightPanelActive .overlayRight {
-    transform: translateY(20%);
+
+#password-requirements li {
+    color: #ccdbdc;
+    text-align: left;
+    list-style-type: disc;
+    font-family: monospace;
+    font-size: 14px;
+
 }
+
+#password-requirements li.met {
+    color: green;
+}
+
+#password-requirements li.unmet {
+    color: rgb(218, 120, 120);
+}
+
+#password-strength {
+    font-weight: bold;
+}
+
+#password-strength span {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.signInBtn{
+    border-radius: 20px;
+    border: 1px solid #dfe8e6;
+    color: #eef3f2;
+    background:transparent;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    text-transform: uppercase;
+    margin-top: 70px;
+    cursor: pointer;
+}
+

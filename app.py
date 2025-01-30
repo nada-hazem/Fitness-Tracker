@@ -18,7 +18,7 @@ app.register_blueprint(auth)
 
 @app.route("/")
 def base():
-    return render_template("base.html")
+    return render_template("signup.html")
 
 
 if __name__ == "__main__":
