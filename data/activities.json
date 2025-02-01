@@ -1,47 +1,64 @@
-[
+{
+  "activities": [
     {
-        "id": 1,
-        "name": "Running",
-        "type": "Cardio",
-        "description": "A high-intensity activity that improves cardiovascular health.",
-        "duration": 60,
-        "caloriesBurnedPerHour": 600,
-        "thumbnail": "../static/images/running.png"
+      "id": "1",
+      "name": "Running",
+      "category": "Cardio",
+      "duration_minutes": 30,
+      "calories_burned_per_hour": 400,
+      "difficulty": "Medium",
+      "photo": "/static/images/Run1.jpg",
+      "description": "Running is a great cardiovascular exercise that helps improve endurance, strengthen the heart, and burn calories. It’s a dynamic, full-body workout suitable for all fitness levels."
     },
     {
-        "id": 2,
-        "name": "Yoga",
-        "type": "Flexibility",
-        "description": "A mind-body practice that enhances flexibility and relaxation.",
-        "duration": 45,
-        "caloriesBurnedPerHour": 200,
-        "thumbnail": "../static/images/yoga.png"
+      "id": "2",
+      "name": "Yoga",
+      "category": "Flexibility",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 200,
+      "difficulty": "Low",
+      "photo": "/static/images/yoga3.jpg",
+      "description": "Yoga enhances flexibility, balance, and mindfulness through a series of poses and stretches. It’s ideal for relieving stress and improving posture."
     },
     {
-        "id": 3,
-        "name": "Cycling",
-        "type": "Endurance",
-        "description": "A great low-impact workout for improving stamina and strength.",
-        "duration": 90,
-        "caloriesBurnedPerHour": 500,
-        "thumbnail": "../static/images/cycling.png"
+      "id": "3",
+      "name": "Cycling",
+      "category": "Cardio",
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 600,
+      "difficulty": "High",
+      "photo": "/static/images/cycling3.jpg",
+      "description": "Cycling is an intense cardiovascular workout that helps build leg strength, stamina, and endurance. It’s great for calorie burning and can be done outdoors or indoors."
     },
     {
-        "id": 4,
-        "name": "Swimming",
-        "type": "Full-body Workout",
-        "description": "A refreshing activity that works all muscle groups.",
-        "duration": 60,
-        "caloriesBurnedPerHour": 700,
-        "thumbnail": "../static/images/swimming.png"
+      "id": "4",
+      "name": "Swimming",
+      "category": "Cardio",
+      "duration_minutes": 50,
+      "calories_burned_per_hour": 500,
+      "difficulty": "Medium",
+      "photo": "/static/images/swim1.jpg",
+      "description": "Swimming is an excellent full-body workout that targets multiple muscle groups, improves cardiovascular health, and provides low-impact exercise."
     },
     {
-        "id": 5,
-        "name": "Weightlifting",
-        "type": "Strength",
-        "description": "Builds muscle and enhances overall body strength.",
-        "duration": 45,
-        "caloriesBurnedPerHour": 400,
-        "thumbnail": "../static/images/weightlifting.png"
+      "id": "5",
+      "name": "Weightlifting",
+      "category": "Strength",
+      "duration_minutes": 40,
+      "calories_burned_per_hour": 300,
+      "difficulty": "High",
+      "photo": "/static/images/weight1.jpg",
+      "description": "Weightlifting builds muscle strength, endurance, and power by lifting various weights. It's ideal for boosting metabolism and increasing muscle mass."
+    },
+    {
+      "id": "6",
+      "name": "Jump Rope",
+      "category": "Strength",
+      "duration_minutes": 40,
+      "calories_burned_per_hour": 300,
+      "difficulty": "High",
+      "photo": "/static/images/robe1.jpg",
+      "description": "Jumping rope is an effective exercise that improves cardiovascular health, coordination, and overall strength. It’s also great for burning calories quickly."
     }
-]
+  ]
+}

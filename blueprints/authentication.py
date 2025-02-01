@@ -128,20 +128,7 @@ def login():
         return render_template("login.html")
     
 
-# @auth.route("/reset_password" , methods=["GET", "POST"])
-# def reset_password():
-#     if request.method == "POST":
-#         email = request.form.get("email", "").strip()
 
-#         if not is_valid_email(email):
-#             flash( "Invalid email addreess","error")
-#             return redirect (url_for("auth.forget"))
-#     users=load_users()
-#     user = next((u for u in users if u["email"] == email), None)
-#     if not user:
-#         flash("No account found with this email address.", "error")
-#         return redirect(url_for("auth.reset_password"))
-#     return render_template("forget.html")
 
 
 @auth.route("/logout")
@@ -149,8 +136,4 @@ def logout():
     session.clear()
     return redirect(url_for('auth.login'))
 
-@auth.route("/test_flash")
-def test_flash():
 
-    flash("This is a test flash message!", "success")
-    return redirect(url_for("auth.login"))

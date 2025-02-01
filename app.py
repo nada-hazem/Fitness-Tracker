@@ -7,6 +7,7 @@ from flask import (
     flash,
     jsonify,
     session,
+    send_from_directory,
 )
 from datetime import timedelta
 from blueprints.authentication import auth
@@ -20,6 +21,9 @@ app.register_blueprint(auth)
 def base():
     return render_template("signup.html")
 
+@app.route('/data/<path:filename>')
+def serve_file(filename):
+    return send_from_directory('data', filename)
 
 if __name__ == "__main__":
     app.run(debug=True)
