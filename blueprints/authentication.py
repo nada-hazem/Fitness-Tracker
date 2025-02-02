@@ -42,27 +42,27 @@ def base():
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
-    print("Signup route accessed")
+
     if request.method == "POST":
         username = request.form.get("username", "").strip()
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
-        # Email validation
+      
         if not is_valid_email(email):
             return redirect(url_for("auth.signup"))
 
-        # Password validation using regex
+        
         password_errors = validate_password(password)
         if password_errors:
             for error in password_errors:
                 flash(error, "error")
             return redirect(url_for("auth.signup"))
 
-        # Load existing users
+       
         users = load_users()
 
-        # Check for existing email
+       
         for user in users:
             if user["email"] == email:
                 flash("Email already exists. Please log in.", "error")
@@ -127,8 +127,6 @@ def login():
             return redirect(url_for("auth.base"))
         return render_template("login.html")
     
-
-
 
 
 @auth.route("/logout")

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>My Activities</title>
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+   
+            <li><a href="{{ url_for('my_activities') }}">🧘‍♂️ My Activities</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <h1>My Activities</h1>
+        <div id="my-activities-container">
+            {% for activity in activities %}
+            <div class="activity-card">
+                <img src="{{ activity.photo }}" alt="{{ activity.name }}" class="activity-photo">
+                <h3>{{ activity.name }}</h3>
+                <p><strong>Category:</strong> {{ activity.category }}</p>
+                <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
+                <p><strong>Calories Burned:</strong> {{ activity.calories_burned_per_hour }} cal/hour</p>
+                <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+                <button class="removeBtn" type="button" onclick="removeActivity('{{ activity.id }}', this)">Remove from My Activities</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        function removeActivity(activityId, button) {
+            fetch("/remove_activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id: activityId }),
+            })
+            .then(response => response.json())
+            .then(() => button.parentElement.remove());
+        }
+    </script>
+</body>
+</html>
