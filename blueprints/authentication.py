@@ -1,4 +1,5 @@
 from flask import Blueprint, Flask, request, render_template, redirect, url_for, flash, jsonify, session
+from functools import wraps
 import re
 from datetime import timedelta
 import json
@@ -7,9 +8,18 @@ from email_validator import validate_email, EmailNotValidError
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 auth.permanent_session_lifetime = timedelta(days=2)
-
 PASSWORD_REGEX = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`])[A-Za-z\d!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`]{8,}$"
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args,**kwargs):
+        if "user"not in session:
+            flash ("You must be logged in","error")
+            return redirect (url_for("auth.login"))
+        return f(*args,**kwargs)
+    return decorated_function
+
+    
 # Function to validate password using regex
 def validate_password(password):
     if not re.match(PASSWORD_REGEX, password):
@@ -37,6 +47,7 @@ def save_users(users):
         json.dump(users, f, indent=4)
 
 @auth.route("/home")
+@login_required
 def base():
     return render_template("home.html")
 
@@ -48,10 +59,13 @@ def signup():
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
+        if not username :
+            flash("Username is required","error")
+            return redirect(url_for("auth.signup"))
+
       
         if not is_valid_email(email):
             return redirect(url_for("auth.signup"))
-
         
         password_errors = validate_password(password)
         if password_errors:
@@ -112,13 +126,14 @@ def login():
 
         # Find user by email
         user = next((u for u in users if u["email"] == email), None)
+    
 
         if user and bcrypt.checkpw(
             password.encode("utf-8"), user["password"].encode("utf-8")
         ):
             session["user"] = user
             flash("Login successful!", "success")
-            return redirect(url_for("base"))
+            return redirect(url_for("auth.base"))
         else:
             flash("Invalid email or password.", "error")
             return redirect(url_for("auth.login"))

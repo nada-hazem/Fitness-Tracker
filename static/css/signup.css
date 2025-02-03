@@ -1,3 +1,4 @@
+
 .body * {
     box-sizing: border-box;
 }
@@ -93,16 +94,6 @@ p {
     text-align: center;
 }
 
-.flash-message {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    margin: 10px auto;
-    text-align: center;
-    list-style: none;
-    padding: 0;
-}
 
 /* Success Flash Message */
 .flash-message.success {
@@ -113,10 +104,16 @@ p {
 
 /* Error Flash Message */
 .flash-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    margin-top: 20px;
+    margin-right: 20px;
+    list-style-type: none;
+    background-color: #ffcccc;
+    color: #d9534f;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
+
 
 /* Info Flash Message */
 .flash-message.info {
@@ -146,20 +143,6 @@ button:focus {
     border-color: #fff;
 
 }
-
-
-/* .formContainer {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all .6s ease-in-out;
-} */
-
-/* .signInContainer {
-    left: 0;
-    width: 50%;
-    z-index: 2;
-} */
 
 .signUpContainer {
     left: 0;
@@ -205,10 +188,6 @@ button:focus {
 
 }
 
-/* .overlayRight {
-    right: 0;
-    transform: translateY(0);
-} */
 
 .welcome {
     padding-top: 90px;
@@ -230,16 +209,12 @@ button:focus {
 }
 
 
-
-
-
 #password-requirements {
     list-style-type: none;
     padding: 0;
     color: #ccdbdc;
 
 }
-
 
 #password-requirements li {
     color: #ccdbdc;

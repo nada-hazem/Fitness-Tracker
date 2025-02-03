@@ -13,14 +13,14 @@
         <form id="signupForm" method="POST" action="{{ url_for('auth.signup') }}">
           <h2 class="create">Create your account</h2>
           <div>
-            <input type="text" id="user-name" name="username" placeholder="Username" required />
+            <input type="text" id="user-name" name="username" placeholder="Username" />
           </div>
           <div>
-            <input type="email" id="user-email" name="email" placeholder="Enter your email" required />
+            <input type="text" id="user-email" name="email" placeholder="Enter your email" />
           </div>
           <div>
             <div>
-              <input type="password" id="user-password" name="password" placeholder="Password" required>
+              <input type="password" id="user-password" name="password" placeholder="Password" >
               <div id="password-strength" style="color: red;"></div>
             </div>
           </div>
@@ -39,14 +39,15 @@
 
         <!-- Flash Messages -->
         <div class="flash-container">
-          {% with messages = get_flashed_messages(with_categories=true) %} {%
-          if messages %}
-          <ul class="flash-messages">
-            {% for category, message in messages %}
-            <li class="flash-message {{ category }}">{{ message|safe }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %} {% endwith %}
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul class="flash-messages">
+                {% for category, message in messages %}
+                  <li class="flash-message {{ category }}">{{ message|safe }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
         </div>
       </div>
 

@@ -82,6 +82,26 @@
         "email": "marwa@gmail.com",
         "password": "$2b$12$91nSx4Z5Zdqdsdn1Y1Vr3.f76A51mJcd7UXFC3XeApmWXxXW9Yfua",
         "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 13,
+        "username": "nada",
+        "email": "nadaayoub362@gmail.com",
+        "password": "$2b$12$IGrdIsya3Wz0ZiikiXcoQ.6tOLVwS9KonBuVDn/KhgOugB6lwXsWC",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 14,
+        "username": "hazem",
+        "email": "hazem@gmail.com",
+        "password": "$2b$12$MToXOWv.b24zYy5geGZ6gOMpXb6GjYGzPuEwfK2twwhQ741EczD72",
+        "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "id": 15,
+        "username": "",
+        "email": "NADA@GMAIL.COM",
+        "password": "$2b$12$97hg/opDYRQy6y0axarNBuJXG8QzTp5S911bNxoxYL6H1HgWGRZ7e",
+        "created_at": "2025-01-01T12:00:00Z"
     }
-   
 ]
