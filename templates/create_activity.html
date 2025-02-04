@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Activity</title>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/create_activity.css') }}"
+  />
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Activity</h2>
+        <form id="activityForm" action="{{ url_for('create_activity') }}" method="POST">
+
+            
+            <label for="activityName">Activity Name:</label>
+            <input type="text" id="activityName" name="activityName" required>
+
+            <label for="activityName">Catogery:</label>
+            <input type="text" id="activityName" name="activityCategory" required>
+            
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="duration" name="duration" required>
+            
+            <label for="calories">Calories Burned Per Hour:</label>
+            <input type="number" id="calories" name="calories" required>
+
+            <label for="activityName">Difficulty:</label>
+            <input type="text" id="activityName" name="activityDifficulty" required>
+
+            <label for="image">Upload Activity Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            
+            
+            <button type="submit">Add Activity</button>
+        </form>
+    </div>
+    <div class="text-container">
+        "Every step counts, every move matters. Track your progress today!"
+        <script src="{{ url_for('static', filename='js/create_activity.js') }}" defer></script>
+</body>
+</html>

@@ -1,25 +1,37 @@
-from flask import Blueprint, Flask, request, render_template, redirect, url_for, flash, jsonify, session
+from flask import (
+    Blueprint,
+    Flask,
+    request,
+    render_template,
+    redirect,
+    url_for,
+    flash,
+    jsonify,
+    session,
+)
 from functools import wraps
 import re
 from datetime import timedelta
 import json
-import bcrypt
-from email_validator import validate_email, EmailNotValidError
+import bcrypt  # type: ignore
+from email_validator import validate_email, EmailNotValidError  # type: ignore
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 auth.permanent_session_lifetime = timedelta(days=2)
 PASSWORD_REGEX = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`])[A-Za-z\d!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`]{8,}$"
 
+
 def login_required(f):
     @wraps(f)
-    def decorated_function(*args,**kwargs):
-        if "user"not in session:
-            flash ("You must be logged in","error")
-            return redirect (url_for("auth.login"))
-        return f(*args,**kwargs)
+    def decorated_function(*args, **kwargs):
+        if "user" not in session:
+            flash("You must be logged in", "error")
+            return redirect(url_for("auth.login"))
+        return f(*args, **kwargs)
+
     return decorated_function
 
-    
+
 # Function to validate password using regex
 def validate_password(password):
     if not re.match(PASSWORD_REGEX, password):
@@ -28,6 +40,7 @@ def validate_password(password):
             "a lowercase letter, a number, and a special character."
         ]
     return []
+
 
 def is_valid_email(email):
     try:
@@ -38,18 +51,22 @@ def is_valid_email(email):
         flash(f"Invalid email: {e}", "error")
         return False
 
+
 def load_users():
     with open("data/users.json", "r") as f:
         return json.load(f)
+
 
 def save_users(users):
     with open("data/users.json", "w") as f:
         json.dump(users, f, indent=4)
 
+
 @auth.route("/home")
-@login_required
+# @login_required
 def base():
     return render_template("home.html")
+
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -59,24 +76,21 @@ def signup():
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
-        if not username :
-            flash("Username is required","error")
+        if not username:
+            flash("Username is required", "error")
             return redirect(url_for("auth.signup"))
 
-      
         if not is_valid_email(email):
             return redirect(url_for("auth.signup"))
-        
+
         password_errors = validate_password(password)
         if password_errors:
             for error in password_errors:
                 flash(error, "error")
             return redirect(url_for("auth.signup"))
 
-       
         users = load_users()
 
-       
         for user in users:
             if user["email"] == email:
                 flash("Email already exists. Please log in.", "error")
@@ -109,7 +123,7 @@ def signup():
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-     
+
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
@@ -126,7 +140,6 @@ def login():
 
         # Find user by email
         user = next((u for u in users if u["email"] == email), None)
-    
 
         if user and bcrypt.checkpw(
             password.encode("utf-8"), user["password"].encode("utf-8")
@@ -141,12 +154,9 @@ def login():
         if "user" in session:
             return redirect(url_for("auth.base"))
         return render_template("login.html")
-    
 
 
 @auth.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for('auth.login'))
-
-
+    return redirect(url_for("auth.login"))

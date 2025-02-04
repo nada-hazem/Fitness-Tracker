@@ -9,6 +9,31 @@
             "id": "1",
             "name": "Running",
             "photo": "/static/images/Run1.jpg"
+        },
+        {
+            "calories_burned_per_hour": 200,
+            "category": "Flexibility",
+            "description": "Yoga enhances flexibility, balance, and mindfulness through a series of poses and stretches. It\u2019s ideal for relieving stress and improving posture.",
+            "difficulty": "Low",
+            "duration_minutes": 60,
+            "id": "2",
+            "name": "Yoga",
+            "photo": "/static/images/yoga3.jpg"
+        },
+        {
+            "calories_burned_per_hour": 77,
+            "duration_minutes": 66,
+            "id": "3",
+            "image": "SC_1.jpg",
+            "name": "nada"
+        },
+        {
+            "calories_burned_per_hour": 77,
+            "category": null,
+            "duration_minutes": 66,
+            "id": "4",
+            "image": "SC_1.jpg",
+            "name": "nada"
         }
     ]
 }
