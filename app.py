@@ -143,7 +143,7 @@ def create_activity():
             "name": activity_name,
             "duration_minutes": int(duration),
             "calories_burned_per_hour": int(calories),
-            "image": filename,
+            "image": filename
         }
 
         user_activities.append(new_activity)

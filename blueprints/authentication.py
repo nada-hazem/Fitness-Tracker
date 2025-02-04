@@ -1,6 +1,5 @@
 from flask import (
     Blueprint,
-    Flask,
     request,
     render_template,
     redirect,
@@ -20,6 +19,20 @@ auth = Blueprint("auth", __name__, url_prefix="/auth")
 auth.permanent_session_lifetime = timedelta(days=2)
 PASSWORD_REGEX = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`])[A-Za-z\d!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`]{8,}$"
 
+class User:
+    def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = self.hash_password(password)
+
+    def hash_password(self, password):
+        return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode("utf-8"), self.password.encode("utf-8"))
+
+    def to_dict(self):
+        return {"username": self.username, "email": self.email, "password": self.password}
 
 def login_required(f):
     @wraps(f)
@@ -31,8 +44,6 @@ def login_required(f):
 
     return decorated_function
 
-
-# Function to validate password using regex
 def validate_password(password):
     if not re.match(PASSWORD_REGEX, password):
         return [
@@ -41,21 +52,17 @@ def validate_password(password):
         ]
     return []
 
-
 def is_valid_email(email):
     try:
-        # Validate email using email_validator
         validate_email(email, check_deliverability=True)
         return True
     except EmailNotValidError as e:
         flash(f"Invalid email: {e}", "error")
         return False
 
-
 def load_users():
     with open("data/users.json", "r") as f:
         return json.load(f)
-
 
 def save_users(users):
     with open("data/users.json", "w") as f:
@@ -63,14 +70,12 @@ def save_users(users):
 
 
 @auth.route("/home")
-# @login_required
+@login_required
 def base():
     return render_template("home.html")
 
-
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
-
     if request.method == "POST":
         username = request.form.get("username", "").strip()
         email = request.form.get("email", "").strip()
@@ -79,10 +84,8 @@ def signup():
         if not username:
             flash("Username is required", "error")
             return redirect(url_for("auth.signup"))
-
         if not is_valid_email(email):
             return redirect(url_for("auth.signup"))
-
         password_errors = validate_password(password)
         if password_errors:
             for error in password_errors:
@@ -90,44 +93,25 @@ def signup():
             return redirect(url_for("auth.signup"))
 
         users = load_users()
+        if any(user["email"] == email for user in users):
+            flash("Email already exists. Please log in.", "error")
+            return redirect(url_for("auth.signup"))
 
-        for user in users:
-            if user["email"] == email:
-                flash("Email already exists. Please log in.", "error")
-                return redirect(url_for("auth.signup"))
-
-        # Hash the password
-        hashed_password = bcrypt.hashpw(
-            password.encode("utf-8"), bcrypt.gensalt()
-        ).decode("utf-8")
-
-        new_user = {
-            "id": len(users) + 1,
-            "username": username,
-            "email": email,
-            "password": hashed_password,
-            "created_at": "2025-01-01T12:00:00Z",
-        }
-
-        # Save new user
-        users.append(new_user)
+        new_user = User(username, email, password)
+        users.append(new_user.to_dict())
         save_users(users)
-        session["user"] = new_user
+        session["user"] = new_user.to_dict()
 
         flash("Account created successfully!", "success")
         return redirect(url_for("auth.login"))
-
     return render_template("signup.html")
-
 
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
 
-        # Validation for empty fields
         if not email:
             flash("Email is required.", "error")
             return redirect(url_for("auth.login"))
@@ -135,26 +119,21 @@ def login():
             flash("Password is required.", "error")
             return redirect(url_for("auth.login"))
 
-        # Load existing users
         users = load_users()
+        user_data = next((u for u in users if u["email"] == email), None)
+        if user_data:
+            user = User(user_data["username"], user_data["email"], user_data["password"])
+            if user.check_password(password):
+                session["user"] = user_data
+                flash("Login successful!", "success")
+                return redirect(url_for("auth.base"))
 
-        # Find user by email
-        user = next((u for u in users if u["email"] == email), None)
-
-        if user and bcrypt.checkpw(
-            password.encode("utf-8"), user["password"].encode("utf-8")
-        ):
-            session["user"] = user
-            flash("Login successful!", "success")
-            return redirect(url_for("auth.base"))
-        else:
-            flash("Invalid email or password.", "error")
-            return redirect(url_for("auth.login"))
-    else:
-        if "user" in session:
-            return redirect(url_for("auth.base"))
-        return render_template("login.html")
-
+        flash("Invalid email or password.", "error")
+        return redirect(url_for("auth.login"))
+    
+    if "user" in session:
+        return redirect(url_for("auth.base"))
+    return render_template("login.html")
 
 @auth.route("/logout")
 def logout():

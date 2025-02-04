@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch("/create_activity", {
                 method: "POST",
-                body: formData, // Send form data including the file
+                body: formData, 
             });
 
             if (response.redirected) {

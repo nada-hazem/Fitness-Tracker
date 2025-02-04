@@ -103,5 +103,10 @@
         "email": "nadaayoub362@gmail.com",
         "password": "$2b$12$tXxTbnPv5.R3XVgbXhnBfewVUMJTddHSqKlnEaVSMknLBGoO3Ow1G",
         "created_at": "2025-01-01T12:00:00Z"
+    },
+    {
+        "username": "nada",
+        "email": "nn@gmail.com",
+        "password": "$2b$12$RylZaXjjlyN4rnhQWbI03.hz7PI8IgiKXMoeccDJddvhVAJ7O4Ks6"
     }
 ]
