@@ -19,6 +19,7 @@ auth = Blueprint("auth", __name__, url_prefix="/auth")
 auth.permanent_session_lifetime = timedelta(days=2)
 PASSWORD_REGEX = r"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`])[A-Za-z\d!@#$%^&*()\-_+=\[\]{}|;:,.<>?/~`]{8,}$"
 
+
 class User:
     def __init__(self, username, email, password):
         self.username = username
@@ -32,7 +33,12 @@ class User:
         return bcrypt.checkpw(password.encode("utf-8"), self.password.encode("utf-8"))
 
     def to_dict(self):
-        return {"username": self.username, "email": self.email, "password": self.password}
+        return {
+            "username": self.username,
+            "email": self.email,
+            "password": self.password,
+        }
+
 
 def login_required(f):
     @wraps(f)
@@ -44,6 +50,7 @@ def login_required(f):
 
     return decorated_function
 
+
 def validate_password(password):
     if not re.match(PASSWORD_REGEX, password):
         return [
@@ -51,6 +58,7 @@ def validate_password(password):
             "a lowercase letter, a number, and a special character."
         ]
     return []
+
 
 def is_valid_email(email):
     try:
@@ -60,9 +68,11 @@ def is_valid_email(email):
         flash(f"Invalid email: {e}", "error")
         return False
 
+
 def load_users():
     with open("data/users.json", "r") as f:
         return json.load(f)
+
 
 def save_users(users):
     with open("data/users.json", "w") as f:
@@ -70,9 +80,10 @@ def save_users(users):
 
 
 @auth.route("/home")
-@login_required
+# @login_required
 def base():
     return render_template("home.html")
+
 
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -106,6 +117,7 @@ def signup():
         return redirect(url_for("auth.login"))
     return render_template("signup.html")
 
+
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -122,7 +134,9 @@ def login():
         users = load_users()
         user_data = next((u for u in users if u["email"] == email), None)
         if user_data:
-            user = User(user_data["username"], user_data["email"], user_data["password"])
+            user = User(
+                user_data["username"], user_data["email"], user_data["password"]
+            )
             if user.check_password(password):
                 session["user"] = user_data
                 flash("Login successful!", "success")
@@ -130,10 +144,11 @@ def login():
 
         flash("Invalid email or password.", "error")
         return redirect(url_for("auth.login"))
-    
+
     if "user" in session:
         return redirect(url_for("auth.base"))
     return render_template("login.html")
+
 
 @auth.route("/logout")
 def logout():

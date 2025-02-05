@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Your Personal Fitness Journey</title>
+   
+        <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/landing.css') }}"
+    />
+    
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">MoveMate</a>
+            <div class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">Workouts</a>
+                <a href="#">Nutrition</a>
+                <a href="#">Community</a>
+                <a href="#">About</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-dark">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Track your fitness journey with precision</h1>
+                <p>MoveMate helps you monitor your workouts, nutrition, and progress with advanced tracking and personalized insights. Join thousands of users transforming their lives.</p>
+                <a href="#" class="cta-button">Start Your Journey</a>
+            </div>
+            <div class="hero-image">
+                <img src="/static/images/dumb.webp"  alt="Fitness Tracking Dashboard" style="width: 500px; height: 300px; border-radius: 12px;">
+                <div class="stats-container">
+                    <div class="stats-title">10K+</div>
+                    <p>Active Members</p>
+                    <div class="user-avatars">
+                        <img src="/static/images/cycling1.jpg" alt="User">
+                        <img src="/static/images/cycling1.jpg" alt="User">
+                        <img src="/static/images/cycling1.jpg" alt="User">
+                        <img src="/static/images/cycling1.jpg" alt="User">
+                    </div>
+                    <!-- <div class="rating">
+                        ⭐⭐⭐⭐⭐ Excellent
+                    </div> -->
+                </div>
+                <div class="floating-tags">
+                    <!-- <div class="tag tag-1">💪 Strength</div>
+                    <div class="tag tag-2">🏃‍♂️ Cardio</div>
+                    <div class="tag tag-3">🥗 Nutrition</div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation for floating tags
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            setInterval(() => {
+                tag.style.transform = `translateY(${Math.random() * 10 - 5}px)`;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

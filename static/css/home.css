@@ -44,65 +44,18 @@ font-size: 20px;
 
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #e9f2f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 4px 0 5px rgba(0, 0, 0, 0.1);
-  padding-top: 20px;
-  z-index: 1000; /*to stay abovee content*/
-}
-
-.sidebar-menu {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-}
-
-.sidebar-menu li {
-  width: 100%;
-  text-align: center;
-}
-
-.sidebar-menu a{
-    text-align: left;
-}
 .user-name{
 text-align: left;
 color:#3f9894;
 margin-right:40px;
 }
 
-.sidebar-menu li a {
-  text-decoration: none;
-  display: block;
-  font-size: 18px;
-  color: #555;
-  padding: 15px;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.sidebar-menu li a:hover {
-  background-color: #d8eef1;
-  color: #3f9894;
-  font-size: 20px;
-}
-
-.sidebar-menu li a.active {
-  background-color: #c1e4e9;
-}
-
 .main {
-  margin-left: 240px;
+  /* margin-left: 240px; */
   padding: 20px;
   width: calc(100% - 240px);
+  justify-content: center;
+  width: 100%;
 }
 
 #activities-container {
@@ -166,4 +119,67 @@ h3 {
 }
 strong {
   color: #3f9894;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f8;
+  display: flex;
+  flex-direction: column; /* Stack navbar and main content vertically */
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed; /* Fix navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 60px; /* Adjust height */
+  background-color: #e9f2f5;
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center;
+  justify-content: space-between; /* Space out items */
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  padding: 0 20px; /* Add padding to sides */
+  z-index: 1000; /* Ensure navbar stays above other content */
+}
+
+.navbar-logo .user-name {
+  color: #3f9894;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.navbar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row; /* Align menu items horizontally */
+  gap: 20px; /* Add spacing between menu items */
+}
+
+.navbar-menu li {
+  display: inline-block; /* Display list items inline */
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #555;
+  padding: 10px 15px; /* Adjust padding */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-menu a:hover {
+  background-color: #d8eef1;
+  color: #3f9894;
+  font-size: 18px;
+}
+
+.navbar-menu a.active {
+  background-color: #c1e4e9;
 }

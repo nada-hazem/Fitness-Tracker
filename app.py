@@ -7,61 +7,50 @@ from flask import (
     url_for,
     flash,
     jsonify,
-    session,
     send_from_directory,
 )
 from datetime import timedelta
 from blueprints.authentication import auth
 from werkzeug.utils import secure_filename
 import os
+from config.config import Config
 
 app = Flask(__name__)
-app.secret_key = "1234"
+app.config.from_object(Config)
 app.register_blueprint(auth)
 
-UPLOAD_FOLDER = "static/uploads"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
-
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
+class Activity:
+    def load_activities():
+        with open(Config.ACTIVITES_FILE, "r", encoding="utf-8") as file:
+            return json.load(file)["activities"]
 
-ACTIVITIES_FILE = "data/activities.json"
-USER_ACTIVITIES_FILE = "data/user_activities.json"
+class UserActivity:
+    def load_user_activities():
+        with open(Config.USER_ACTIVITY_FILE, "r") as file:
+            return json.load(file)["user_activities"]
 
+    def save_user_activities(user_activities):
+        with open(Config.USER_ACTIVITY_FILE, "w") as f:
+            json.dump({"user_activities": user_activities}, f, indent=4)
 
-# Load all default activities
-def load_activities():
-    with open(ACTIVITIES_FILE, "r") as file:
-        return json.load(file)["activities"]
-
-
-# Load user activities
-def load_user_activities():
-    with open(USER_ACTIVITIES_FILE, "r") as file:
-        return json.load(file)["user_activities"]
-
-
-# Save user activities
-def save_user_activities(user_activities):
-    with open(USER_ACTIVITIES_FILE, "w") as f:
-        json.dump({"user_activities": user_activities}, f, indent=4)
-
+@app.route("/landing_page")
+def landing_page():
+    return render_template("landingpage.html")
 
 @app.route("/")
 def base():
     return render_template("signup.html")
 
 
-# edisplay  user activity
 @app.route("/my_activities")
 def my_activities():
-    user_activities = load_user_activities()
+    user_activities = UserActivity.load_user_activities()
     return render_template("my_activities.html", activities=user_activities)
 
 
@@ -73,8 +62,8 @@ def add_activity():
     if not activity_id:
         return jsonify({"error": "Invalid activity ID"}), 400
 
-    all_activities = load_activities()
-    user_activities = load_user_activities()
+    all_activities = Activity.load_activities()
+    user_activities = UserActivity.load_user_activities()
 
     activity = None
     for act in all_activities:
@@ -85,7 +74,7 @@ def add_activity():
     # if activity and activity not in user_activities:
     if activity and activity_id not in user_activities:
         user_activities.append(activity)
-        save_user_activities(user_activities)
+        UserActivity.save_user_activities(user_activities)
         return jsonify({"message": "Activity added successfully"}), 200
 
     return jsonify({"message": "Activity already added"}), 400
@@ -99,10 +88,10 @@ def remove_activity():
     if not activity_id:
         return jsonify({"error": "Invalid activity ID"}), 400
 
-    user_activities = load_user_activities()
+    user_activities = UserActivity.load_user_activities()
     updated_activities = [act for act in user_activities if act["id"] != activity_id]
 
-    save_user_activities(updated_activities)
+    UserActivity.save_user_activities(updated_activities)
     return jsonify({"message": "Activity removed successfully"}), 200
 
 
@@ -127,7 +116,7 @@ def create_activity():
         filename = None
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            image_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            image_path = os.path.join(Config.UPLOAD_FOLDER, filename)
             image.save(image_path)
         else:
             flash(
@@ -135,20 +124,20 @@ def create_activity():
             )
             return redirect(url_for("create_activity"))
 
-        user_activities = load_user_activities()
+        user_activities = UserActivity.load_user_activities()
 
         new_activity = {
             "id": str(len(user_activities) + 1),
-            "category" : category,
+            "category": category,
             "name": activity_name,
             "duration_minutes": int(duration),
             "calories_burned_per_hour": int(calories),
-            "image": filename
+            "image": filename,
         }
 
         user_activities.append(new_activity)
 
-        save_user_activities(user_activities)
+        UserActivity.save_user_activities(user_activities)
 
         flash("Activity created successfully!", "success")
         return redirect(url_for("my_activities"))
@@ -156,6 +145,28 @@ def create_activity():
     return render_template("create_activity.html")
 
 
+@app.route("/update_activity", methods=["POST"])
+def update_activity():
+    data = request.json
+    activity_id = data.get("id")
+    updated_name = data.get("name")
+    updated_duration = data.get("duration_minutes")
+    updated_calories = data.get("calories_burned_per_hour")
+    updated_category = data.get("category")
+
+    user_activities = UserActivity.load_user_activities()
+
+    for activity in user_activities:
+        if activity["id"] == activity_id:
+            activity["name"] = updated_name
+            activity["duration_minutes"] = int(updated_duration)
+            activity["calories_burned_per_hour"] = int(updated_calories)
+            activity["category"] = updated_category
+            break
+
+    UserActivity.save_user_activities(user_activities)
+
+    return jsonify({"message": "Activity updated successfully!"}), 200
 @app.route("/data/<path:filename>")
 def serve_file(filename):
     return send_from_directory("data", filename)

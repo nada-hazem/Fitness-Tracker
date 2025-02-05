@@ -7,36 +7,60 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/home.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/my_activity.css') }}"
+    />
+
     <title>My Activities</title>
   </head>
   <body>
-    <div class="sidebar">
-      <ul class="sidebar-menu">
-        <li><a href="{{ url_for('my_activities') }}">🧘‍♂️ My Activities</a></li>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <h2 class="user-name">User Name</h2>
+      </div>
+      <ul class="navbar-menu">
+        <li>
+          <a href="/create_activity"
+            ><i class="icon-class">🧘‍♂️</i> Create your activity</a
+          >
+        </li>
+        <li>
+          <a href="/my_activities"
+            ><i class="icon-class">🧘‍♂️</i> My Activities</a
+          >
+        </li>
+        <li>
+          <a href="#"><i class="icon-class">🎯</i> Goals</a>
+        </li>
+        <li>
+          <a href="#"><i class="icon-class">📊</i> Progress</a>
+        </li>
       </ul>
-    </div>
+      <form method="get" action="{{url_for('auth.logout')}}">
+        <input type="submit" value="Logout" class="logout-btn" />
+      </form>
+    </nav>
+
     <div class="main">
       <h1>My Activities</h1>
       <div id="my-activities-container">
         {% for activity in activities %}
         <div class="activity-card">
-            {% if activity.photo %}
+          {% if activity.photo %}
           <img
             src="{{ activity.photo }}"
             alt="{{ activity.name }}"
             class="activity-photo"
           />
-          
-          {% else %}
-          {% if activity.image %}
+          {% elif activity.image %}
           <img
-          src="{{ url_for('static', filename='uploads/' + activity.image) }}"
-          alt="Activity Image"
-          class="activity-photo"
+            src="{{ url_for('static', filename='uploads/' + activity.image) }}"
+            alt="Activity Image"
+            class="activity-photo"
           />
           {% endif %}
-          {% endif %}
-          
+
           <h3>{{ activity.name }}</h3>
           <p><strong>Category:</strong> {{ activity.category }}</p>
           <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
@@ -45,7 +69,14 @@
             activity.calories_burned_per_hour }} cal/hour
           </p>
           <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
-         
+
+          <button
+            class="editBtn"
+            onclick="openEditModal('{{ activity.id }}', '{{ activity.name }}', '{{ activity.category }}', '{{ activity.duration_minutes }}', '{{ activity.calories_burned_per_hour }}', '{{ activity.difficulty }}')"
+          >
+            Edit
+          </button>
+
           <button
             class="removeBtn"
             type="button"
@@ -57,7 +88,92 @@
         {% endfor %}
       </div>
     </div>
+
+    <!-- Edit Activity Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Edit Activity</h2>
+        <form id="editActivityForm">
+          <input type="hidden" id="editActivityId" />
+          <label>Name:</label>
+          <input type="text" id="editActivityName" required />
+          <label>Category:</label>
+          <input type="text" id="editActivityCategory" required />
+          <label>Duration (minutes):</label>
+          <input type="number" id="editActivityDuration" required />
+          <label>Calories Burned:</label>
+          <input type="number" id="editActivityCalories" required />
+          <label>Difficulty:</label>
+          <input type="text" id="editActivityDifficulty" required />
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+
     <script>
+      function openEditModal(
+        id,
+        name,
+        category,
+        duration,
+        calories,
+        difficulty
+      ) {
+        console.log("Opening Modal with Data:", {
+          id,
+          name,
+          category,
+          duration,
+          calories,
+          difficulty,
+        });
+
+        document.getElementById("editActivityId").value = id || "";
+        document.getElementById("editActivityName").value = name || "";
+        document.getElementById("editActivityCategory").value = category || "";
+        document.getElementById("editActivityDuration").value = duration || 0;
+        document.getElementById("editActivityCalories").value = calories || 0;
+        document.getElementById("editActivityDifficulty").value =
+          difficulty || "";
+
+        document.getElementById("editModal").style.display = "block";
+      }
+
+      function closeEditModal() {
+        document.getElementById("editModal").style.display = "none";
+      }
+
+      document
+        .getElementById("editActivityForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const updatedActivity = {
+            id: document.getElementById("editActivityId").value,
+            name: document.getElementById("editActivityName").value,
+            category: document.getElementById("editActivityCategory").value,
+            duration_minutes: document.getElementById("editActivityDuration")
+              .value,
+            calories_burned_per_hour: document.getElementById(
+              "editActivityCalories"
+            ).value,
+            difficulty: document.getElementById("editActivityDifficulty").value,
+          };
+
+          fetch("/update_activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedActivity),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(data.message);
+              location.reload();
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+
       function removeActivity(activityId, button) {
         fetch("/remove_activity", {
           method: "POST",
