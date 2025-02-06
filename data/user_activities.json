@@ -1,14 +1,14 @@
 {
     "user_activities": [
         {
-            "calories_burned_per_hour": 400,
-            "category": "Cardio",
-            "description": "Running is a great cardiovascular exercise that helps improve endurance, strengthen the heart, and burn calories. It\u2019s a dynamic, full-body workout suitable for all fitness levels.",
-            "difficulty": "Medium",
-            "duration_minutes": 30,
-            "id": "1",
-            "name": "Runningnnn",
-            "photo": "/static/images/Run1.jpg"
+            "calories_burned_per_hour": 20099,
+            "category": "Flexibility",
+            "description": "Yoga enhances flexibility, balance, and mindfulness through a series of poses and stretches. It\u2019s ideal for relieving stress and improving posture.",
+            "difficulty": "Low",
+            "duration_minutes": 8860,
+            "id": "2",
+            "name": "Yogaaa",
+            "photo": "/static/images/yoga3.png"
         }
     ]
 }

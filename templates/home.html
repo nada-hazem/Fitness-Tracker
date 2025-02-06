@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/home.css') }}"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
 
-    <title>Home</title>
-  </head>
-  <body>
-    <nav class="navbar">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <title>MoveMate - Your Fitness Companion</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
       <div class="navbar-logo">
         <h2 class="user-name">User Name</h2>
       </div>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
       <ul class="navbar-menu">
-        <li>
-          <a href="/create_activity"><i class="icon-class">🧘‍♂️</i> Create your activity</a>
-        </li>
-        <li>
-          <a href="/my_activities"><i class="icon-class">🧘‍♂️</i> My Activities</a>
-        </li>
-        <li>
-          <a href="#"><i class="icon-class">🎯</i> Goals</a>
-        </li>
-        <li>
-          <a href="#"><i class="icon-class">📊</i> Progress</a>
+        <li><a href="/create_activity"><i class="icon-class">🏋️</i> Create Activity</a></li>
+        <li><a href="/my_activities"><i class="icon-class">📅</i> My Activities</a></li>
+        <li><a href="#"><i class="icon-class">🎯</i> Goals</a></li>
+        <li><a href="#"><i class="icon-class">📊</i> Progress</a></li>
+        <li class="nav-logout">
+          <form method="get" action="{{url_for('auth.logout')}}">
+            <input type="submit" value="Logout" class="logout-btn" />
+          </form>
         </li>
       </ul>
-      <form method="get" action="{{url_for('auth.logout')}}">
-        <input type="submit" value="Logout" class="logout-btn" />
-      </form>
-    </nav>
-    <div class="main">
-      <h1>Welcome to MoveMate </h1>
-
-      <h2>Default Activities for you</h2>
-      <div id="activities-container">
-      </div>
     </div>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %}
-    <ul>
-      {% for category, message in messages %}
-      <li class="flash-message {{ category }}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
-    
-
+  </nav>
+    <div class="main">
+        <h1>Welcome to MoveMate</h1>
+        <h2>Discover Your Perfect Activities</h2>
+        <div id="activities-container"></div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
     <script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
-  </body>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}" defer></script>
+
+
+</body>
 </html>
