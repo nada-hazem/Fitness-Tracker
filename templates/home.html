@@ -14,7 +14,8 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-logo">
-        <h2 class="user-name">User Name</h2>
+          <h2 class="user-name">{{ session['user']['username'] }}</h2>
+          
       </div>
       <div class="menu-toggle" id="mobile-menu">
         <span class="bar"></span>
@@ -22,10 +23,10 @@
         <span class="bar"></span>
       </div>
       <ul class="navbar-menu">
-        <li><a href="/create_activity"><i class="icon-class">🏋️</i> Create Activity</a></li>
-        <li><a href="/my_activities"><i class="icon-class">📅</i> My Activities</a></li>
-        <li><a href="#"><i class="icon-class">🎯</i> Goals</a></li>
-        <li><a href="#"><i class="icon-class">📊</i> Progress</a></li>
+        <li><a href="/create_activity">Create Activity</a></li>
+        <li><a href="/my_activities">My Activities</a></li>
+        <li><a href="#"> Goals</a></li>
+        <li><a href="#"> Progress</a></li>
         <li class="nav-logout">
           <form method="get" action="{{url_for('auth.logout')}}">
             <input type="submit" value="Logout" class="logout-btn" />

@@ -134,10 +134,8 @@ def login():
         users = load_users()
         user_data = next((u for u in users if u["email"] == email), None)
         if user_data:
-            user = User(
-                user_data["username"], user_data["email"], user_data["password"]
-            )
-            if user.check_password(password):
+            # Instead of creating a new User instance, use bcrypt directly
+            if bcrypt.checkpw(password.encode("utf-8"), user_data["password"].encode("utf-8")):
                 session["user"] = user_data
                 flash("Login successful!", "success")
                 return redirect(url_for("auth.base"))

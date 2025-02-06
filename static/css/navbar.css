@@ -1,3 +1,4 @@
+/* Navbar Styles */
 .navbar {
   position: fixed;
   top: 0;
@@ -5,9 +6,6 @@
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-
   z-index: 1000;
 }
 
@@ -19,23 +17,30 @@
   height: 70px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
-.navbar-logo .user-name {
+.navbar-logo {
+  flex: 1; /* Pushes user name to the left */
+}
+
+.user-name {
   color: #3f9894;
   font-size: 1.2rem;
   font-weight: 600;
 }
 
 .navbar-menu {
+  flex: 2; /* Centers the menu */
   display: flex;
+  justify-content: center;
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .navbar-menu li {
-  margin-left: 20px;
+  margin: 0 10px;
 }
 
 .navbar-menu a {
@@ -50,6 +55,12 @@
   color: #3f9894;
 }
 
+.nav-logout {
+  flex: 1; /* Pushes logout button to the right */
+  display: flex;
+  justify-content: flex-end;
+}
+
 .logout-btn {
   background-color: #ff6b6b;
   color: white;
@@ -62,10 +73,6 @@
 
 .logout-btn:hover {
   background-color: #ff4757;
-}
-.navbar-menu a.active {
-  background-color: #3f9894;
-  color: #ffffff;
 }
 
 .menu-toggle {
@@ -116,6 +123,7 @@
 
   .nav-logout {
     margin-top: 10px;
+    justify-content: center;
   }
 }
 

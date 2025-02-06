@@ -3,42 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Activity</title>
-    <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/create_activity.css') }}"
-  />
+    <title>Create Your Activity | MoveMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create_activity.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2>Create Your Activity</h2>
-        <form id="activityForm" action="{{ url_for('create_activity') }}" method="POST">
+    <nav class="navbar">
+        <div class="navbar-container">
+          <div class="navbar-logo">
+            <h2 class="user-name">User Name</h2>
+          </div>
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navbar-menu">
+            <li><a href="/create_activity"><i class="icon-class">🏋️</i> Create Activity</a></li>
+            <li><a href="/my_activities"><i class="icon-class">📅</i> My Activities</a></li>
+            <li><a href="#"><i class="icon-class">🎯</i> Goals</a></li>
+            <li><a href="#"><i class="icon-class">📊</i> Progress</a></li>
+            <li class="nav-logout">
+              <form method="get" action="{{url_for('auth.logout')}}">
+                <input type="submit" value="Logout" class="logout-btn" />
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+    <div class="page-container">
+        <div class="form-container">
+            <h1>Create Your Activity</h1>
+            <form id="activityForm" action="{{ url_for('create_activity') }}" method="POST">
+                <div class="input-group">
+                    <input type="text" id="activityName" name="activityName" required>
+                    <label for="activityName">Activity Name</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="activityCategory" name="category" required>
+                    <label for="activityCategory">Category</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="number" id="duration" name="duration" required>
+                    <label for="duration">Duration (minutes)</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="number" id="calories" name="calories" required>
+                    <label for="calories">Calories Burned Per Hour</label>
+                </div>
 
-            
-            <label for="activityName">Activity Name:</label>
-            <input type="text" id="activityName" name="activityName" required>
+                <div class="input-group">
+                    <input type="text" id="activityDifficulty" name="difficulty" required>
+                    <label for="activityDifficulty">Difficulty</label>
+                </div>
 
-            <label for="activityName">Catogery:</label>
-            <input type="text" id="activityName" name="activityCategory" required>
-            
-            <label for="duration">Duration (minutes):</label>
-            <input type="number" id="duration" name="duration" required>
-            
-            <label for="calories">Calories Burned Per Hour:</label>
-            <input type="number" id="calories" name="calories" required>
-
-            <label for="activityName">Difficulty:</label>
-            <input type="text" id="activityName" name="activityDifficulty" required>
-
-            <label for="image">Upload Activity Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-            
-            
-            <button type="submit">Add Activity</button>
-        </form>
+                <div class="file-input-group">
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label for="image">
+                        <span class="file-input-text">Upload Activity Image</span>
+                        <span class="file-input-btn">Choose File</span>
+                    </label>
+                </div>
+                
+                <button type="submit">Add Activity</button>
+            </form>
+        </div>
+        <div class="inspiration-container">
+            <div class="inspiration-text">
+                "Every step counts, every move matters. Track your progress today!"
+            </div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
     </div>
-    <div class="text-container">
-        "Every step counts, every move matters. Track your progress today!"
-        <script src="{{ url_for('static', filename='js/create_activity.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/create_activity.js') }}" defer></script>
 </body>
 </html>
+
