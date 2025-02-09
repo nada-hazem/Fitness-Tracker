@@ -134,7 +134,7 @@ def login():
         users = load_users()
         user_data = next((u for u in users if u["email"] == email), None)
         if user_data:
-            # Instead of creating a new User instance, use bcrypt directly
+          
             if bcrypt.checkpw(
                 password.encode("utf-8"), user_data["password"].encode("utf-8")
             ):
