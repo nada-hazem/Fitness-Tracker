@@ -30,7 +30,9 @@
     <nav class="navbar">
       <div class="navbar-container">
         <div class="navbar-logo">
-          <h5 class="user-name">{{ session['user']['username'] }}</h5>
+          <p class="user-name">
+            <span>Welcome </span>{{ session['user']['username'] }}
+          </p>
         </div>
         <div class="menu-toggle" id="mobile-menu">
           <span class="bar"></span>
@@ -48,7 +50,7 @@
             <a href="/my_activities"> My Activities</a>
           </li>
           <li>
-            <a href="#"> Goals</a>
+            <a href="/my_goals"> Goals</a>
           </li>
           <li>
             <a href="#">Progress</a>
@@ -80,19 +82,20 @@
             class="activity-photo"
           />
           {% endif %}
-        <div class="activity-content">
-
-          <h3>{{ activity.name }}</h3>
-          <div class="activity-details">
-            <p><strong>Category:</strong> {{ activity.category }}</p>
-            <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
-            <p>
-            <strong>Calories Burned:</strong> {{
-            activity.calories_burned_per_hour }} cal/hour
-            </p>
-           <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+          <div class="activity-content">
+            <h3>{{ activity.name }}</h3>
+            <div class="activity-details">
+              <p><strong>Category:</strong> {{ activity.category }}</p>
+              <p>
+                <strong>Duration:</strong> {{ activity.duration_minutes }} min
+              </p>
+              <p>
+                <strong>Calories Burned:</strong> {{
+                activity.calories_burned_per_hour }} cal/hour
+              </p>
+              <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+            </div>
           </div>
-        </div>
 
           <link
             rel="stylesheet"
@@ -104,7 +107,6 @@
             onclick="openEditModal('{{ activity.id }}', '{{ activity.name }}', '{{ activity.category }}', '{{ activity.duration_minutes }}', '{{ activity.calories_burned_per_hour }}', '{{ activity.difficulty }}')"
           >
             <i class="fas fa-edit"></i>
-         
           </button>
 
           <button
@@ -113,8 +115,14 @@
             onclick="removeActivity('{{ activity.id }}', this)"
           >
             <i class="fas fa-trash-alt"></i>
-            <!-- Trash Icon -->
           </button>
+          <button
+    class="add-to-goals"
+    data-id="{{ activity.id }}"
+    type="button"
+>
+    Add to Goals
+</button>
         </div>
         {% endfor %}
       </div>

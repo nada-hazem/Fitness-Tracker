@@ -14,6 +14,7 @@ from datetime import timedelta
 from blueprints.authentication import auth
 from werkzeug.utils import secure_filename
 import os
+import json as json_module
 from config.config import Config
 from functools import wraps
 
@@ -47,7 +48,7 @@ class UserActivity:
         try:
             with open(Config.USER_ACTIVITY_FILE, "r") as file:
                 return json.load(file)["user_activities"]
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json_module.JSONDecodeError):
             return {}
 
     @staticmethod
@@ -84,6 +85,35 @@ class UserActivity:
                     activity.update(updated_data)
                     break
             UserActivity.save_user_activities(activities)
+class UserGoal:
+    @staticmethod
+    def load_user_goals():
+        try:
+            with open(Config.USER_GOALS_FILE, "r") as file:
+                return json.load(file)["user_goals"]
+        except (FileNotFoundError, json_module.JSONDecodeError):
+            return {}
+
+    @staticmethod
+    def get_user_goals(user_email):
+        goals = UserGoal.load_user_goals()
+        return goals.get(user_email, [])
+
+    @staticmethod
+    def save_user_goals(goals):
+        with open(Config.USER_GOALS_FILE, "w") as f:
+            json.dump({"user_goals": goals}, f, indent=4)
+
+    @staticmethod
+    def add_goal_for_user(user_email, activity):
+        goals = UserGoal.load_user_goals()
+        if user_email not in goals:
+            goals[user_email] = []
+        goals[user_email].append(activity)
+        UserGoal.save_user_goals(goals)
+    
+
+
 
 @app.route("/landing_page")
 def landing_page():
@@ -102,6 +132,61 @@ def my_activities():
     
     user_activities = UserActivity.get_user_activities(user_email)
     return render_template("my_activities.html", activities=user_activities)
+
+@app.route("/add_to_goals", methods=["POST"])
+@login_required
+def add_to_goals():
+    user_email = session.get('user', {}).get('email')
+    if not user_email:
+        return jsonify({"error": "User not logged in"}), 401
+
+    data = request.get_json()
+    if not data or "id" not in data:
+        return jsonify({"error": "Invalid request payload"}), 400
+
+    activity_id = data["id"]
+    user_activities = UserActivity.get_user_activities(user_email)
+    activity = next((act for act in user_activities if act["id"] == activity_id), None)
+
+    if not activity:
+        return jsonify({"error": "Activity not found"}), 404
+
+    user_goals = UserGoal.get_user_goals(user_email)
+    if activity_id in [g["id"] for g in user_goals]:
+        return jsonify({"message": "Activity already added to goals"}), 200
+
+    UserGoal.add_goal_for_user(user_email, activity)
+    return jsonify({"message": "Activity added to goals successfully"}), 200
+
+@app.route("/remove_goal", methods=["POST"])
+@login_required
+def remove_goal():
+    user_email = session.get('user', {}).get('email')
+    if not user_email:
+        return jsonify({"error": "User not logged in"}), 401
+
+    data = request.json
+    activity_id = data.get("id")
+
+    if not activity_id:
+        return jsonify({"error": "Invalid activity ID"}), 400
+
+    user_goals = UserGoal.get_user_goals(user_email)
+    updated_goals = [goal for goal in user_goals if goal["id"] != activity_id]
+    UserGoal.save_user_goals({user_email: updated_goals})
+
+    return jsonify({"message": "Activity removed from goals"}), 200
+@app.route("/my_goals")
+@login_required
+def my_goals():
+    user_email = session.get('user', {}).get('email')
+    if not user_email:
+        return redirect(url_for('auth.login'))
+    
+    user_goals = UserGoal.get_user_goals(user_email)
+    
+    return render_template("goals.html", goals=user_goals, goals_json=json.dumps(user_goals))
+
 
 @app.route("/add_activity", methods=["POST"])
 @login_required

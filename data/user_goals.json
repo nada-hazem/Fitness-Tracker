@@ -1,5 +1,5 @@
 {
-    "user_activities": {
+    "user_goals": {
         "nadaayoub362@gmail.com": [
             {
                 "calories_burned_per_hour": 400,
@@ -39,18 +39,7 @@
                 "id": "4",
                 "name": "Swimming",
                 "photo": "/static/images/swim1.webp"
-            },
-            {
-                "calories_burned_per_hour": 300,
-                "category": "Strength",
-                "description": "Jumping rope is an effective exercise that improves cardiovascular health, coordination, and overall strength. It\u2019s also great for burning calories quickly.",
-                "difficulty": "High",
-                "duration_minutes": 40,
-                "id": "6",
-                "name": "Jump Rope",
-                "photo": "/static/images/robe1.png"
             }
-        ],
-        "user_email": []
+        ]
     }
 }

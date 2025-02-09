@@ -99,7 +99,7 @@ h3 {
 }
 
 
-.editBtn , .rembtn {
+.editBtn , .rembtn ,.add-to-goals{
   margin: 10px 15px;
   padding: 8px 12px;
   border: none;
@@ -121,11 +121,17 @@ h3 {
   background-color: #b30000;
 }
 
-.editBtn:hover, .rembtn:hover {
+.editBtn:hover, .rembtn:hover , .add-to-goals:hover {
   opacity: 0.9;
   transform: scale(1.03);
 }
+.add-to-goals{
 
+  color: white;
+
+  background-color: rgb(74, 94, 81);
+
+}
 @media (max-width: 768px) {
   #my-activities-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

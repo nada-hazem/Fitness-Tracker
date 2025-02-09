@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/my_activity.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/navbar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <title>My Goals</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <p class="user-name">
+            <span>Welcome </span>{{ session['user']['username'] }}
+          </p>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu">
+          <li><a href="/auth/home">Home</a></li>
+          <li><a href="/create_activity">Create Activity</a></li>
+          <li><a href="/my_activities">My Activities</a></li>
+          <li><a href="/my_goals">Goals</a></li>
+          <li><a href="#">Progress</a></li>
+          <li class="nav-logout">
+            <form method="get" action="{{url_for('auth.logout')}}">
+              <input type="submit" value="Logout" class="logout-btn" />
+            </form>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <h1>My Goals</h1>
+      <div id="my-activities-container">
+        {% for activity in goals %}
+        <div class="activity-card">
+          {% if activity.photo %}
+          <img
+            src="{{ activity.photo }}"
+            alt="{{ activity.name }}"
+            class="activity-photo"
+          />
+          {% elif activity.image %}
+          <img
+            src="{{ url_for('static', filename='uploads/' + activity.image) }}"
+            alt="Activity Image"
+            class="activity-photo"
+          />
+          {% endif %}
+          <div class="activity-content">
+            <h3>{{ activity.name }}</h3>
+            <div class="activity-details">
+              <p><strong>Category:</strong> {{ activity.category }}</p>
+              <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
+              <p><strong>Calories Burned:</strong> {{ activity.calories_burned_per_hour }} cal/hour</p>
+              <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+            </div>
+          </div>
+
+          <button class="rembtn" type="button" onclick="removeGoal('{{ activity.id }}', this)">
+            Remove from Goals
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="chart-container" style="width: 300px; height: 300px; margin: auto;">
+        <h2 style="text-align: center;">Calories Burned by Activity</h2>
+        <canvas id="goalsChart"></canvas>
+    </div>
+    
+    <script
+      src="{{ url_for('static', filename='js/goals.js') }}"
+      defer
+    ></script>
+
+    <script
+      src="{{ url_for('static', filename='js/navbar.js') }}"
+      defer
+    ></script>
+    <script id="goals-data" type="application/json">{{ goals_json | safe }}</script>
+
+  </body>
+</html>

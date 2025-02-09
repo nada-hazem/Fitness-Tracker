@@ -96,3 +96,32 @@ body {
    margin-top: 30px;
 
 }
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Space for the toggle button */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.password-toggle i {
+    color: #777;
+}
+
+.password-toggle.visible i {
+    color:#0a7d18be; /* Change color when active */
+}
+
