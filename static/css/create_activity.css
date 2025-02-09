@@ -1,191 +1,187 @@
-:root {
-    --primary-color: #3a7bd5;
-    --secondary-color: #00d2ff;
-    --text-color: #333;
-    --background-color: #f4f7f8;
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f8;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container {
+  display: flex;
+  margin-top: 60px;
+  width: 100%;
+  max-width: 1200px;
+  height: 75vh;
+  background: #f4f7f8;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #59ab62;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.input-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color:#434040db;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #92bfa0;
+}
+
+.input-group input:focus {
+  border-bottom: 2px solid  #92bfa0;
+}
+
+.file-input-group {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input-group input[type="file"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.file-input-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.file-input-group label:hover {
+  background: #e0e0e0;
+}
+
+.file-input-text {
+  color: #434040db;
+}
+
+.file-input-btn {
+  background:
+  #5c946a;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  background:
+ #5c946a;
+ 
+ 
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inspiration-container {
+  flex: 1;
+  background: linear-gradient(135deg, #77b68b76 0%, #4aa762 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.inspiration-text {
+  color: #434040db;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.6;
+  z-index: 1;
+  animation: fadeInPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInPulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
   }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
-  
+}
+
+@media (max-width: 768px) {
   .page-container {
-    display: flex;
-    margin-top: 60px;
-    width: 100%;
-    max-width: 1200px;
-    height: 75vh;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
     flex-direction: column;
-    gap: 20px;
+    height: auto;
   }
-  
-  .input-group {
-    position: relative;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: var(--text-color);
-    border: none;
-    border-bottom: 1px solid #ddd;
-    outline: none;
-    background: transparent;
-    transition: border-color 0.2s;
-  }
-  
-  .input-group label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #999;
-    pointer-events: none;
-    transition: 0.2s ease all;
-  }
-  
-  .input-group input:focus ~ label,
-  .input-group input:valid ~ label {
-    top: -20px;
-    font-size: 14px;
-    color: var(--primary-color);
-  }
-  
-  .input-group input:focus {
-    border-bottom: 2px solid var(--primary-color);
-  }
-  
-  .file-input-group {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    width: 100%;
-  }
-  
-  .file-input-group input[type="file"] {
-    position: absolute;
-    left: -9999px;
-  }
-  
-  .file-input-group label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: #f0f0f0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .file-input-group label:hover {
-    background: #e0e0e0;
-  }
-  
-  .file-input-text {
-    color: #666;
-  }
-  
-  .file-input-btn {
-    background: var(--primary-color);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 3px;
-  }
-  
-  button[type="submit"] {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  button[type="submit"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
+
   .inspiration-container {
-    flex: 1;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+    display: none;
   }
-  
-  .inspiration-text {
-    color: white;
-    font-size: 24px;
-    font-weight: 300;
-    text-align: center;
-    max-width: 80%;
-    line-height: 1.6;
-    z-index: 1;
-    animation: fadeInPulse 3s ease-in-out infinite alternate;
+
+  .form-container {
+    padding: 20px;
   }
-  
-  @keyframes fadeInPulse {
-    0% {
-      opacity: 0.5;
-      transform: scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  
-  @media (max-width: 768px) {
-    .page-container {
-      flex-direction: column;
-      height: auto;
-    }
-  
-    .inspiration-container {
-      display: none;
-    }
-  
-    .form-container {
-      padding: 20px;
-    }
-  }
-  
-  
+}

@@ -80,7 +80,7 @@ def save_users(users):
 
 
 @auth.route("/home")
-# @login_required
+@login_required
 def base():
     return render_template("home.html")
 

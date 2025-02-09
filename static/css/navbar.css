@@ -7,7 +7,9 @@
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
 }
+
 
 .navbar-container {
   display: flex;
@@ -18,20 +20,21 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  border-bottom: 1px solid #59ab62;
 }
 
 .navbar-logo {
-  flex: 1; /* Pushes user name to the left */
+  flex: 1.1;
+  margin-top: 30px;
+  color: #434040db;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 40px;
 }
 
-.user-name {
-  color: #3f9894;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
 
 .navbar-menu {
-  flex: 2; /* Centers the menu */
+  flex: 3; 
   display: flex;
   justify-content: center;
   list-style-type: none;
@@ -40,29 +43,30 @@
 }
 
 .navbar-menu li {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .navbar-menu a {
   text-decoration: none;
-  color: #333;
-  font-size: 1rem;
+  color: #333333b5;
+  font-size: 1.2rem;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
+
 .navbar-menu a:hover {
-  color: #3f9894;
+  color:#59ab62;
 }
 
 .nav-logout {
-  flex: 1; /* Pushes logout button to the right */
+  flex: 2; 
   display: flex;
   justify-content: flex-end;
 }
 
 .logout-btn {
-  background-color: #ff6b6b;
+  background-color:  #424247;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -72,7 +76,7 @@
 }
 
 .logout-btn:hover {
-  background-color: #ff4757;
+  background-color: #5c5e5d;
 }
 
 .menu-toggle {

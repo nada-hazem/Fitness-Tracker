@@ -21,7 +21,7 @@ h1 {
 }
 
 .create {
-    color: #44a491;
+    color: #0a7d18be;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -76,8 +76,8 @@ p {
 
 .signBtn {
     border-radius: 20px;
-    border: 1px solid #44a491;
-    background: #44a491;
+    border: 1px solid #0a7d18be;
+    background: #0a7d18be;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
@@ -85,6 +85,11 @@ p {
     text-transform: uppercase;
     margin-top: 70px;
     cursor: pointer;
+}
+.signBtn:hover{
+    color: #0a7d18be;
+    background: #fff;
+
 }
 
 /* Flash Messages */
@@ -164,7 +169,7 @@ button:focus {
 
 .overlay {
 
-    background: linear-gradient(to right, #44a491, #2b739d) no-repeat 0 0 / cover;
+    background: linear-gradient(to right, #0a7d18be, #cdd7ce) no-repeat 0 0 / cover;
     color: #fff;
     position: relative;
     left: -100%;

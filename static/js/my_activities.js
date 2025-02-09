@@ -61,6 +61,10 @@ function openEditModal(
     });
 
   function removeActivity(activityId, button) {
+    let userActivities = JSON.parse(localStorage.getItem("user_activities")) || [];
+    userActivities = userActivities.filter(id => id !== activityId);
+    localStorage.setItem("user_activities", JSON.stringify(userActivities));
+
     fetch("/remove_activity", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

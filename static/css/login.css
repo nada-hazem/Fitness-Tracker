@@ -30,7 +30,7 @@ body {
 .form-title {
     font-size: 24px;
     margin-bottom: 20px;
-    color:  #44a491;
+    color: #0a7d18be;;
 }
 
 .login-form {
@@ -52,7 +52,7 @@ body {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #44a491;
+    background-color: #0a7d18be;;
     color: #fff;;
     color: white;
     border: none;
@@ -64,7 +64,7 @@ body {
 }
 
 .submit-btn:hover {
-    background-color: #468276;
+    background-color: #0a7d18be;;
 }
 
 /* Flash messages */

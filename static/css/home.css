@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #f4f7f8;
+
   display: flex;
   flex-direction: column;
 }
@@ -15,62 +16,55 @@ body {
   margin-right: auto;
 }
 
-h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-align: center;
-  color: #6fba07;
-  margin-bottom: 30px;
-  position: relative;
-}
 
-h1::after {
+h2 {
+  font-size: 1.5rem;
+  color: #59ab62;
+  margin-bottom: 1rem;
+  text-align: center;
+  /* margin-top: -30px; */
+}
+h2::after {
   content: '';
   display: block;
   width: 100px;
   height: 4px;
-  background-color:  #6fba07;
+  background: linear-gradient(135deg, #f4f7f8 0%,  #59ab62 100%);
+
   margin: 10px auto;
-}
-
-h2 {
-  color:#737373;
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
+} 
 
 
 #activities-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
 }
 
 .activity-card {
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    max-width: 250px;
-    margin: 0 auto;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  border: 1px solid rgba(89, 171, 98, 0.1);
 }
 
 .activity-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(63, 152, 148, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(89, 171, 98, 0.2);
 }
 
 .activity-photo {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 3px solid #59ab62;
 }
 
 .activity-content {
@@ -81,7 +75,7 @@ h2 {
 }
 
 h3 {
-    color: #6fba07;
+    color: #434040db;
     font-size: 1.2rem;
     margin-bottom: 10px;
     line-height: 1.2;
@@ -93,9 +87,6 @@ h3 {
     font-size: 0.9rem;
     line-height: 1.4;
     flex-grow: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
@@ -109,12 +100,16 @@ h3 {
 .activity-details p {
     margin: 0;
     font-size: 0.8rem;
-    color: #888;
+    color: #59ab62;
+    font-weight: bold;
 }
 
 .activity-details strong {
-    color: #3f9894;
-    font-weight: 600;
+
+    color:#666;
+    font-weight: 400;
+    
+ 
 }
 
 .addBtn, .removeBtn {
@@ -123,21 +118,22 @@ h3 {
     border: none;
     border-radius: 8px;
     font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .addBtn {
-    /* background-color:#6fba07; */
-    border:solid 2px #6fba07;
-    color: rgb(87, 82, 82);
+   
+    border:solid 2px white ;
+    color: white;
+    background-color: #59ab62 ;
   
 }
 
 .removeBtn {
-    background-color: #ff6b6b;
+    background-color: #b30000;
     color: white;
 }
 
@@ -145,7 +141,7 @@ h3 {
     opacity: 0.9;
     transform: scale(1.03);
 }
-
+/* 
 .flash-messages {
   position: fixed;
   top: 80px;
@@ -172,4 +168,4 @@ h3 {
 .flash-message.error {
   background-color: #f44336;
   color: white;
-}
+} */

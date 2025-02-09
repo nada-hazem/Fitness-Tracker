@@ -108,28 +108,33 @@ def my_activities():
 def add_activity():
     user_email = session.get('user', {}).get('email')
     if not user_email:
+
         return jsonify({"error": "User not logged in"}), 401
 
-    data = request.json
-    activity_id = data.get("id")
+    data = request.get_json()
+  
 
-    if not activity_id:
-        return jsonify({"error": "Invalid activity ID"}), 400
+    if not data or "id" not in data:
+       
+        return jsonify({"error": "Invalid request payload"}), 400
 
+    activity_id = data["id"]
     all_activities = Activity.load_activities()
     user_activities = UserActivity.get_user_activities(user_email)
 
-    activity = None
-    for act in all_activities:
-        if act["id"] == activity_id:
-            activity = act
-            break
+    activity = next((act for act in all_activities if act["id"] == activity_id), None)
 
-    if activity and activity_id not in [a["id"] for a in user_activities]:
-        UserActivity.add_activity_for_user(user_email, activity)
-        return jsonify({"message": "Activity added successfully"}), 200
+    if not activity:
+  
+        return jsonify({"error": "Activity not found"}), 404
 
-    return jsonify({"message": "Activity already added"}), 400
+    if activity_id in [a["id"] for a in user_activities]:
+     
+        return jsonify({"message": "Activity already added"}), 200
+
+    UserActivity.add_activity_for_user(user_email, activity)
+
+    return jsonify({"message": "Activity added successfully"}), 200
 
 @app.route("/remove_activity", methods=["POST"])
 @login_required

@@ -5,59 +5,101 @@
 }
 
 h1 {
+  color: #59ab62;
+  margin-bottom: 1rem;
   text-align: center;
-  color: #3f9894;
-  margin-bottom: 30px;
-  font-size: 2.5rem;
+
+}
+h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #f4f7f8 0%,  #59ab62 100%);
+  margin: 10px auto;
+} 
+h3 {
+  color: #434040db;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.main {
+  margin-top: 90px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #my-activities-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
 }
 
 .activity-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  border: 1px solid rgba(89, 171, 98, 0.1);
 }
 
 .activity-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(63, 152, 148, 0.2);
+  box-shadow: 0 15px 30px rgba(89, 171, 98, 0.2);
 }
 
 .activity-photo {
   width: 100%;
-  height: 140px;
+  height: 180px;
   object-fit: cover;
+  border-bottom: 3px solid #59ab62;
+}
+.activity-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.activity-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.activity-details p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #59ab62;
+  font-weight: bold;
+}
+
+.activity-details strong {
+
+  color:#666;
+  font-weight: 400;
+
 }
 
 .activity-card h3 {
+  color: #434040db;
   font-size: 1.2rem;
-  color: #3f9894;
-  margin: 15px 15px 10px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 
-.activity-card p {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 5px 15px;
-  line-height: 1.4;
-}
 
-.activity-card strong {
-  color: #3f9894;
-  font-weight: 600;
-}
-
-.editBtn {
+.editBtn , .rembtn {
   margin: 10px 15px;
   padding: 8px 12px;
   border: none;
@@ -65,24 +107,23 @@ h1 {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  color: white;
   transition: background-color 0.3s ease;
 }
 
 .editBtn {
-  background-color: #4caf50;
-  color: white;
+  border:solid 2px white ;
+    color: white;
+    background-color: #59ab62 ;
 }
 
-#rem {
-  background-color: red;
+.rembtn{
+  background-color: #b30000;
 }
 
-.editBtn:hover {
-  background-color: #45a049;
-}
-
-#rem:hover {
-  background-color: #ff4757;
+.editBtn:hover, .rembtn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
 }
 
 @media (max-width: 768px) {

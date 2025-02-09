@@ -30,7 +30,7 @@
     <nav class="navbar">
       <div class="navbar-container">
         <div class="navbar-logo">
-          <h2 class="user-name">{{ session['user']['username'] }}</h2>
+          <h5 class="user-name">{{ session['user']['username'] }}</h5>
         </div>
         <div class="menu-toggle" id="mobile-menu">
           <span class="bar"></span>
@@ -80,15 +80,19 @@
             class="activity-photo"
           />
           {% endif %}
+        <div class="activity-content">
 
           <h3>{{ activity.name }}</h3>
-          <p><strong>Category:</strong> {{ activity.category }}</p>
-          <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
-          <p>
+          <div class="activity-details">
+            <p><strong>Category:</strong> {{ activity.category }}</p>
+            <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
+            <p>
             <strong>Calories Burned:</strong> {{
             activity.calories_burned_per_hour }} cal/hour
-          </p>
-          <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+            </p>
+           <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+          </div>
+        </div>
 
           <link
             rel="stylesheet"
@@ -100,12 +104,11 @@
             onclick="openEditModal('{{ activity.id }}', '{{ activity.name }}', '{{ activity.category }}', '{{ activity.duration_minutes }}', '{{ activity.calories_burned_per_hour }}', '{{ activity.difficulty }}')"
           >
             <i class="fas fa-edit"></i>
-            <!-- Edit Icon -->
+         
           </button>
 
           <button
-            class="editBtn"
-            id="rem"
+            class="rembtn"
             type="button"
             onclick="removeActivity('{{ activity.id }}', this)"
           >
