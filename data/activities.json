@@ -5,9 +5,9 @@
       "name": "Running",
       "category": "Cardio",
       "duration_minutes": 30,
-      "calories_burned_per_hour": 400,
+      "calories_burned_per_hour": 600,
       "difficulty": "Medium",
-      "photo": "/static/images/robe1.webp"
+      "photo": "/static/images/Run3.webp"
     },
     {
       "id": "2",
@@ -16,59 +16,169 @@
       "duration_minutes": 60,
       "calories_burned_per_hour": 200,
       "difficulty": "Low",
-     "photo": "/static/images/cycling3.webp",
-      "description": "Yoga enhances flexibility, balance, and mindfulness through a series of poses and stretches. It’s ideal for relieving stress and improving posture."
+      "photo": "/static/images/yoga3.webp"
     },
     {
       "id": "3",
       "name": "Cycling",
       "category": "Cardio",
       "duration_minutes": 45,
-      "calories_burned_per_hour": 600,
-      "difficulty": "High",
-      "photo": "/static/images/Run3.webp",
-      "description": "Cycling is an intense cardiovascular workout that helps build leg strength, stamina, and endurance. It’s great for calorie burning and can be done outdoors or indoors."
+      "calories_burned_per_hour": 500,
+      "difficulty": "Medium",
+      "photo": "/static/images/cycling3.webp"
     },
     {
       "id": "4",
       "name": "Swimming",
       "category": "Cardio",
-      "duration_minutes": 50,
-      "calories_burned_per_hour": 500,
-      "difficulty": "Medium",
-      "photo": "/static/images/swim1.webp",
-      "description": "Swimming is an excellent full-body workout that targets multiple muscle groups, improves cardiovascular health, and provides low-impact exercise."
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 700,
+      "difficulty": "High",
+      "photo": "/static/images/swim1.webp"
     },
     {
       "id": "5",
       "name": "Weightlifting",
       "category": "Strength",
-      "duration_minutes": 40,
-      "calories_burned_per_hour": 300,
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 400,
       "difficulty": "High",
-  "photo": "/static/images/robe1.png",
-      "description": "Weightlifting builds muscle strength, endurance, and power by lifting various weights. It's ideal for boosting metabolism and increasing muscle mass."
+      "photo": "/static/images/weightlifting.webp"
     },
     {
       "id": "6",
       "name": "Jump Rope",
-      "category": "Strength",
-      "duration_minutes": 40,
-      "calories_burned_per_hour": 300,
-      "difficulty": "High",
-      "photo": "/static/images/robe1.png",
-      "description": "Jumping rope is an effective exercise that improves cardiovascular health, coordination, and overall strength. It’s also great for burning calories quickly."
+      "category": "Cardio",
+      "duration_minutes": 30,
+      "calories_burned_per_hour": 700,
+      "difficulty": "Medium",
+      "photo": "/static/images/jumprope.webp"
     },
     {
-      "id": "6",
-      "name": "Jump Rope",
-      "category": "Strength",
-      "duration_minutes": 40,
-      "calories_burned_per_hour": 300,
+      "id": "7",
+      "name": "Pilates",
+      "category": "Flexibility",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 250,
+      "difficulty": "Medium",
+      "photo": "/static/images/pilates.webp"
+    },
+    {
+      "id": "8",
+      "name": "Hiking",
+      "category": "Cardio",
+      "duration_minutes": 120,
+      "calories_burned_per_hour": 450,
+      "difficulty": "Medium",
+      "photo": "/static/images/hiking.webp"
+    },
+    {
+      "id": "9",
+      "name": "Dancing",
+      "category": "Cardio",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 400,
+      "difficulty": "Varies",
+      "photo": "/static/images/dancing.webp"
+    },
+    {
+      "id": "10",
+      "name": "Rowing",
+      "category": "Cardio",
+      "duration_minutes": 30,
+      "calories_burned_per_hour": 600,
       "difficulty": "High",
-      "photo": "/static/images/robe1.png",
-      "description": "Jumping rope is an effective exercise that improves cardiovascular health, coordination, and overall strength. It’s also great for burning calories quickly."
+      "photo": "/static/images/rowing.webp"
+    },
+    {
+      "id": "11",
+      "name": "Tennis",
+      "category": "Cardio",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 500,
+      "difficulty": "Medium",
+      "photo": "/static/images/tennis.webp"
+    },
+    {
+      "id": "12",
+      "name": "Kickboxing",
+      "category": "Cardio",
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 600,
+      "difficulty": "High",
+      "photo": "/static/images/kickboxing.webp"
+    },
+    {
+      "id": "13",
+      "name": "Climbing",
+      "category": "Strength",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 700,
+      "difficulty": "High",
+      "photo": "/static/images/climbing.webp"
+    },
+    {
+      "id": "14",
+      "name": "Squash",
+      "category": "Cardio",
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 800,
+      "difficulty": "High",
+      "photo": "/static/images/squash.webp"
+    },
+    {
+      "id": "15",
+      "name": "Basketball",
+      "category": "Cardio",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 600,
+      "difficulty": "Medium",
+      "photo": "/static/images/basketball.webp"
+    },
+    {
+      "id": "16",
+      "name": "Football",
+      "category": "Cardio",
+      "duration_minutes": 90,
+      "calories_burned_per_hour": 650,
+      "difficulty": "High",
+      "photo": "/static/images/football.webp"
+    },
+    {
+      "id": "17",
+      "name": "Martial Arts",
+      "category": "Strength",
+      "duration_minutes": 60,
+      "calories_burned_per_hour": 700,
+      "difficulty": "High",
+      "photo": "/static/images/martialarts.webp"
+    },
+    {
+      "id": "18",
+      "name": "Rowing Machine",
+      "category": "Cardio",
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 600,
+      "difficulty": "High",
+      "photo": "/static/images/rowingmachine.webp"
+    },
+    {
+      "id": "19",
+      "name": "Stair Climbing",
+      "category": "Cardio",
+      "duration_minutes": 30,
+      "calories_burned_per_hour": 650,
+      "difficulty": "Medium",
+      "photo": "/static/images/stairclimbing.webp"
+    },
+    {
+      "id": "20",
+      "name": "Elliptical Machine",
+      "category": "Cardio",
+      "duration_minutes": 45,
+      "calories_burned_per_hour": 500,
+      "difficulty": "Low",
+      "photo": "/static/images/elliptical.webp"
     }
-
   ]
 }

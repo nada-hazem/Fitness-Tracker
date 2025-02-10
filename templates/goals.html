@@ -11,6 +11,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/goals.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/my_activity.css') }}"
     />
     <link
@@ -54,6 +58,33 @@
 
     <div class="main">
       <h1>My Goals</h1>
+      <div class="analysis">
+        
+        <div class="stats-container">
+        <div class="stat-card">
+            <h3>Total Activities</h3>
+            <p id="total-activities">0</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Calories Per Hour</h3>
+            <p id="total-calories">0</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Duration (Minutes)</h3>
+            <p id="total-duration">0</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Calories Burned</h3>
+            <p id="total-burned">0</p>
+        </div>
+        </div>
+        
+        <div class="chart-container">
+            <h2 style="text-align: center;">Calories Burned by Activity</h2>
+            <canvas id="goalsChart"></canvas>
+            </div>
+    </div>
+    
       <div id="my-activities-container">
         {% for activity in goals %}
         <div class="activity-card">
@@ -87,11 +118,7 @@
         {% endfor %}
       </div>
     </div>
-    <div class="chart-container" style="width: 300px; height: 300px; margin: auto;">
-        <h2 style="text-align: center;">Calories Burned by Activity</h2>
-        <canvas id="goalsChart"></canvas>
-    </div>
-    
+   
     <script
       src="{{ url_for('static', filename='js/goals.js') }}"
       defer

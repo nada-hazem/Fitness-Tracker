@@ -1,45 +1,5 @@
 {
     "user_goals": {
-        "nadaayoub362@gmail.com": [
-            {
-                "calories_burned_per_hour": 400,
-                "category": "Cardio",
-                "difficulty": "Medium",
-                "duration_minutes": 30,
-                "id": "1",
-                "name": "Running",
-                "photo": "/static/images/robe1.webp"
-            },
-            {
-                "calories_burned_per_hour": 200,
-                "category": "Flexibility",
-                "description": "Yoga enhances flexibility, balance, and mindfulness through a series of poses and stretches. It\u2019s ideal for relieving stress and improving posture.",
-                "difficulty": "Low",
-                "duration_minutes": 60,
-                "id": "2",
-                "name": "Yoga",
-                "photo": "/static/images/cycling3.webp"
-            },
-            {
-                "calories_burned_per_hour": 600,
-                "category": "Cardio",
-                "description": "Cycling is an intense cardiovascular workout that helps build leg strength, stamina, and endurance. It\u2019s great for calorie burning and can be done outdoors or indoors.",
-                "difficulty": "High",
-                "duration_minutes": 45,
-                "id": "3",
-                "name": "Cycling",
-                "photo": "/static/images/Run3.webp"
-            },
-            {
-                "calories_burned_per_hour": 500,
-                "category": "Cardio",
-                "description": "Swimming is an excellent full-body workout that targets multiple muscle groups, improves cardiovascular health, and provides low-impact exercise.",
-                "difficulty": "Medium",
-                "duration_minutes": 50,
-                "id": "4",
-                "name": "Swimming",
-                "photo": "/static/images/swim1.webp"
-            }
-        ]
+        "nadaayoub362@gmail.com": []
     }
 }
