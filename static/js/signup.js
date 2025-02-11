@@ -1,8 +1,10 @@
+//select elements
 const passwordInput = document.getElementById("user-password"); 
 const strengthLabel = document.getElementById("strength-label");
 const passwordRequirements = document.getElementById("password-requirements");
 const passwordStrengthText = document.getElementById("password-strength");
 
+//obkect to store elements
 const requirements = {
   uppercase: document.getElementById("uppercase"),
   lowercase: document.getElementById("lowercase"),
@@ -19,9 +21,11 @@ const regex = {
   length: /.{8,}/,
 };
 
+// Function to evaluate password strength and update UI
 const passwordStrength = (password) => {
   let strength = "Weak";
 
+// Show or hide password requirements section based on input presence
   if (password.length > 0) {
     passwordRequirements.classList.remove("hidden");
     passwordStrengthText.classList.remove("hidden"); 
@@ -32,6 +36,7 @@ const passwordStrength = (password) => {
 
   let passedConditions = 0;
 
+  // Loop through each requirement and check if the password meets it
   for (const key in regex) {
     const meetsCondition = regex[key].test(password);
     requirements[key].classList.toggle("met", meetsCondition);
@@ -39,16 +44,7 @@ const passwordStrength = (password) => {
     if (meetsCondition) passedConditions++;
   }
 
-  if (passedConditions === 5) {
-    // strength = "Strong";
-    strengthLabel.style.color = "green";
-  } else if (passedConditions >= 3) {
-    // strength = "Medium";
-    strengthLabel.style.color = "orange";
-  } else {
-    // strength = "Weak";
-    strengthLabel.style.color = "red";
-  }
+ 
 
   strengthLabel.textContent = strength;
 };
@@ -64,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
       button.addEventListener("click", function () {
           const targetId = button.getAttribute("data-target");
           const passwordInput = document.getElementById(targetId);
-
+          
+          // Toggle password visibility between "password" and "text"
           if (passwordInput.type === "password") {
               passwordInput.type = "text";
               button.classList.add("visible");

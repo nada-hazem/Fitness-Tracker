@@ -47,13 +47,10 @@
             <a href="/create_activity"> Create Activity</a>
           </li>
           <li>
-            <a href="/my_activities"> My Activities</a>
+            <a href="/my_activities" style="color: green"> My Activities</a>
           </li>
           <li>
             <a href="/my_goals"> Goals</a>
-          </li>
-          <li>
-            <a href="#">Progress</a>
           </li>
           <li class="nav-logout">
             <form method="get" action="{{url_for('auth.logout')}}">
@@ -117,12 +114,12 @@
             <i class="fas fa-trash-alt"></i>
           </button>
           <button
-    class="add-to-goals"
-    data-id="{{ activity.id }}"
-    type="button"
->
-    Add to Goals
-</button>
+            class="add-to-goals"
+            data-id="{{ activity.id }}"
+            type="button"
+          >
+            Add to Goals
+          </button>
         </div>
         {% endfor %}
       </div>
@@ -132,7 +129,7 @@
     <div id="editModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeEditModal()">&times;</span>
-        <h2>Edit Activity</h2>
+        <h2 class="u">Edit Activity</h2>
         <form id="editActivityForm">
           <input type="hidden" id="editActivityId" />
           <label>Name:</label>

@@ -1,0 +1,20 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #59ab62; 
+    --primary-light: rgba(89, 171, 98, 0.1); 
+  
+    /* Secondary Colors */
+    --secondary-color: #f4f7f8; 
+  
+    /* Text Colors */
+    --text-dark: #434040db; 
+    --text-gray: #666;
+    --text-white: #ffffff; 
+  
+    /* Accent Colors */
+    --accent-red: #b30000; 
+  
+  
+    --neutral-white: #ffffff; 
+    --neutral-gray: #666; 
+  }

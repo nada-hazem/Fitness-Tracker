@@ -1,3 +1,5 @@
+@import url('var.css');
+
 .main {
   padding: 20px;
   max-width: 1200px;
@@ -5,25 +7,27 @@
 }
 
 h1 {
-  color: #59ab62;
+  color: var(--primary-color);
   margin-bottom: 1rem;
   text-align: center;
-
 }
+
 h1::after {
   content: '';
   display: block;
   width: 100px;
   height: 4px;
-  background: linear-gradient(135deg, #f4f7f8 0%,  #59ab62 100%);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
   margin: 10px auto;
-} 
+}
+
 h3 {
-  color: #434040db;
+  color: var(--text-dark);
   font-size: 1.2rem;
   margin-bottom: 10px;
   line-height: 1.2;
 }
+
 .main {
   margin-top: 90px;
   padding: 20px;
@@ -41,7 +45,7 @@ h3 {
 }
 
 .activity-card {
-  background: #ffffff;
+  background: var(--neutral-white);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -50,7 +54,7 @@ h3 {
   flex-direction: column;
   max-width: 300px;
   margin: 0 auto;
-  border: 1px solid rgba(89, 171, 98, 0.1);
+  border: 1px solid var(--primary-light);
 }
 
 .activity-card:hover {
@@ -62,8 +66,9 @@ h3 {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-bottom: 3px solid #59ab62;
+  border-bottom: 3px solid var(--primary-color);
 }
+
 .activity-content {
   padding: 15px;
   display: flex;
@@ -77,29 +82,29 @@ h3 {
   gap: 5px;
   margin-bottom: 15px;
 }
+
 .activity-details p {
   margin: 0;
   font-size: 0.8rem;
-  color: #59ab62;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
 .activity-details strong {
-
-  color:#666;
+  color: var(--text-gray);
   font-weight: 400;
-
 }
 
 .activity-card h3 {
-  color: #434040db;
+  color: var(--text-dark);
   font-size: 1.2rem;
   margin-bottom: 10px;
   line-height: 1.2;
 }
 
-
-.editBtn , .rembtn ,.add-to-goals{
+.editBtn,
+.rembtn,
+.add-to-goals {
   margin: 10px 15px;
   padding: 8px 12px;
   border: none;
@@ -107,31 +112,35 @@ h3 {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  color: white;
+  color: var(--text-white);
   transition: background-color 0.3s ease;
 }
 
 .editBtn {
-  border:solid 2px white ;
-    color: white;
-    background-color: #59ab62 ;
+  border: solid 2px var(--text-white);
+  background-color: var(--primary-color);
 }
 
-.rembtn{
-  background-color: #b30000;
+.rembtn {
+  background-color: var(--accent-red);
 }
 
-.editBtn:hover, .rembtn:hover , .add-to-goals:hover {
+.editBtn:hover,
+.rembtn:hover,
+.add-to-goals:hover {
   opacity: 0.9;
   transform: scale(1.03);
 }
-.add-to-goals{
 
-  color: white;
-
-  background-color: rgb(74, 94, 81);
-
+.add-to-goals {
+  background-color: var(--primary-color);
 }
+
+.added-goal {
+  background-color: var(--text-gray) !important;
+  color: var(--text-white) !important;
+}
+
 @media (max-width: 768px) {
   #my-activities-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

@@ -1,149 +1,145 @@
-/* Add this to your CSS file */
-.hero {
+@import url('var.css');
+
+.main {
+    margin-top: 0;
+    background: var(--neutral-white);
     position: relative;
-    min-height: 80vh;
-    background: linear-gradient(135deg, #f4f7f8 0%, #92BFA0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-top: 60px; /* Adjusted for your navbar */
+    z-index: 2;
+  }
+
+.hero {
+  position: relative;
+  min-height: 80vh;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 60px;
 }
 
 .hero-content {
-    max-width: 1200px;
-    padding: 2rem;
-    text-align: center;
-    z-index: 2;
-    animation: fadeInUp 0.8s ease-out;
-    
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: center;
+  z-index: 2; 
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    color: #434040db;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+  font-size: 3.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .hero-title::after {
-    content: none; 
+  content: none;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color:  #666;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    /* font-weight: 300; */
-    z-index: 1;
-    animation: fadeInPulse 3s ease-in-out infinite alternate;
+  font-size: 1.5rem;
+  color: var(--text-gray);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  animation: fadeInPulse 3s ease-in-out infinite alternate;
 }
+
 @keyframes fadeInPulse {
-    0% {
-      opacity: 0.5;
-      transform: scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
+  from{
+    opacity: 0.5;
+    transform: scale(0.95);
   }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 3rem;
 }
 
 .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .stat-number {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #59ab62;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 .stat-label {
-    color: #666;
-    font-size: 1rem;
-    margin-top: 0.5rem;
+  color: var(--text-gray);
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 .hero-cta {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color:transparent;
-    color:#54ac54;
-
-    text-decoration: none;
-    border-radius: 50px;
-    border: 1px solid #54ac54 ;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px #90b890;
-    margin-bottom: 40px;
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 50px;
+  border: 1px solid var(--primary-color);
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px var(--primary-light);
+  margin-bottom: 40px;
 }
 
 .hero-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(79, 110, 161, 0.3);
-  
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 110, 161, 0.3);
 }
 
 .hero-shape {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: #fff;
-    clip-path: polygon(0 100%, 100% 100%, 100% 0);
-    z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: var(--neutral-white);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  z-index: 1;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+@keyframes fadeInUp { /*from invisable to visable*/ 
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
+  .hero-title {
+    font-size: 2.5rem;
+  }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
 
-    .hero-stats {
-        flex-direction: column;
-        gap: 2rem;
-    }
+  .hero-stats {
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .stat-number {
-        font-size: 2rem;
-    }
+  .stat-number {
+    font-size: 2rem;
+  }
 }
 
-/* Update your existing main class to accommodate the hero section */
-.main {
-    margin-top: 0;
-    background: #fff;
-    position: relative;
-    z-index: 2;
-}

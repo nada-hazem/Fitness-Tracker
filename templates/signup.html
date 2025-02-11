@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Signup</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-
 <body>
   <div class="body">
-    <div class="container rightPanelActive">
+    <div class="container">
       <div class="formContainer signUpContainer">
         <form id="signupForm" method="POST" action="{{ url_for('auth.signup') }}">
           <h2 class="create">Create your account</h2>
           <div>
-            <input type="text" id="user-name" name="username" placeholder="Username" required />
+            <input type="text" id="user-name" name="username" placeholder="Username"/>
           </div>
           <div>
-            <input type="email" id="user-email" name="email" placeholder="Enter your email" required />
+            <input type="email" id="user-email" name="email" placeholder="Enter your email"/>
           </div>
           <div class="password-wrapper">
-            <input type="password" id="user-password" name="password" placeholder="Password" required>
+            <input type="password" id="user-password" name="password" placeholder="Password" >
             <button type="button" class="password-toggle" data-target="user-password">
               <i class="fa-solid fa-arrows-to-eye"></i>
             </button>
@@ -50,20 +48,13 @@
             {% endif %}
           {% endwith %}
         </div>
-      </div>
-
-      <div class="overlayContainer">
-        <div class="overlay">
+      </div>     
             <div class="overlayPanel">
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
                 <a href="{{ url_for('auth.login') }}" class="signInBtn">Sign In</a>
             </div>
-        </div>
-      </div>
-    
   </div>
   <script src="{{ url_for('static', filename='js/signup.js') }}" defer></script>
 </body>
-
 </html>

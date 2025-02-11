@@ -5,7 +5,6 @@ from flask import (
     redirect,
     url_for,
     flash,
-    jsonify,
     session,
 )
 from functools import wraps
@@ -134,7 +133,7 @@ def login():
         users = load_users()
         user_data = next((u for u in users if u["email"] == email), None)
         if user_data:
-          
+
             if bcrypt.checkpw(
                 password.encode("utf-8"), user_data["password"].encode("utf-8")
             ):

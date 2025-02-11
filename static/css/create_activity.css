@@ -1,11 +1,11 @@
-
+@import url('var.css');
 
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f7f8;
-  color: var(--text-color);
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,7 +18,7 @@ body {
   width: 100%;
   max-width: 1200px;
   height: 75vh;
-  background: #f4f7f8;
+  background: var(--secondary-color);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@ body {
 
 h1 {
   font-size: 2rem;
-  color: #59ab62;
+  color: var(--primary-color);
   margin-bottom: 30px;
   text-align: center;
 }
@@ -51,7 +51,7 @@ form {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #333;
+  color: var(--text-dark);
   border: none;
   border-bottom: 1px solid #ddd;
   outline: none;
@@ -65,7 +65,7 @@ form {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color:#434040db;
+  color: var(--text-dark);
   pointer-events: none;
   transition: 0.2s ease all;
 }
@@ -74,11 +74,11 @@ form {
 .input-group input:valid ~ label {
   top: -20px;
   font-size: 14px;
-  color: #92bfa0;
+  color: var(--primary-color);
 }
 
 .input-group input:focus {
-  border-bottom: 2px solid  #92bfa0;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .file-input-group {
@@ -98,34 +98,31 @@ form {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: #f0f0f0;
+  background: var(--input-background);
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .file-input-group label:hover {
-  background: #e0e0e0;
+  background: var(--primary-light);
 }
 
 .file-input-text {
-  color: #434040db;
+  color: var(--text-dark);
+  margin-left:-20px;
 }
 
 .file-input-btn {
-  background:
-  #5c946a;
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-white);
   padding: 5px 10px;
   border-radius: 3px;
 }
 
 button[type="submit"] {
-  background:
- #5c946a;
- 
- 
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-white);
   border: none;
   padding: 15px;
   font-size: 18px;
@@ -141,7 +138,7 @@ button[type="submit"]:hover {
 
 .inspiration-container {
   flex: 1;
-  background: linear-gradient(135deg, #77b68b76 0%, #4aa762 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,7 +147,7 @@ button[type="submit"]:hover {
 }
 
 .inspiration-text {
-  color: #434040db;
+  color: var(--text-dark);
   font-size: 24px;
   font-weight: 300;
   text-align: center;
@@ -185,3 +182,33 @@ button[type="submit"]:hover {
     padding: 20px;
   }
 }
+
+.flash-container {
+  margin-bottom: 20px;
+}
+
+.flash-messages {
+  list-style: none;
+  padding: 0;
+}
+
+.flash-message {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.flash-message.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #c62828;
+}
+
+.flash-message.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+

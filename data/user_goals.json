@@ -1,5 +1,60 @@
 {
     "user_goals": {
-        "nadaayoub362@gmail.com": []
+        "nadaayoub362@gmail.com": [
+            {
+                "calories_burned_per_hour": 200,
+                "category": "Flexibility",
+                "difficulty": "Low",
+                "duration_minutes": 60,
+                "id": "2",
+                "name": "Yoga",
+                "photo": "/static/images/yoga3.webp"
+            },
+            {
+                "calories_burned_per_hour": 500,
+                "category": "Cardio",
+                "difficulty": "Medium",
+                "duration_minutes": 45,
+                "id": "3",
+                "name": "Cycling",
+                "photo": "/static/images/cycling3.webp"
+            },
+            {
+                "calories_burned_per_hour": 700,
+                "category": "Cardio",
+                "difficulty": "Medium",
+                "duration_minutes": 30,
+                "id": "6",
+                "name": "Jump Rope",
+                "photo": "/static/images/robe1.webp"
+            },
+            {
+                "calories_burned_per_hour": 400,
+                "category": "Strength",
+                "difficulty": "High",
+                "duration_minutes": 45,
+                "id": "5",
+                "name": "Weightlifting",
+                "photo": "/static/images/weight1.webp"
+            },
+            {
+                "calories_burned_per_hour": 88,
+                "category": "888",
+                "difficulty": "gggg",
+                "duration_minutes": 77,
+                "id": "9",
+                "image": "basketball-court-ball-and-sports-match-or-competi-2023-11-27-04-58-17-utc.jpg",
+                "name": "nnn"
+            },
+            {
+                "calories_burned_per_hour": 700,
+                "category": "Cardio",
+                "difficulty": "High",
+                "duration_minutes": 60,
+                "id": "4",
+                "name": "Swimming",
+                "photo": "/static/images/swim1.webp"
+            }
+        ]
     }
 }

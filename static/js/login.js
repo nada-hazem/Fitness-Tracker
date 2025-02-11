@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButtons = document.querySelectorAll(".password-toggle");
-  
+    
+  //toggle visibility of password 
     toggleButtons.forEach(button => {
         button.addEventListener("click", function () {
             const targetId = button.getAttribute("data-target");

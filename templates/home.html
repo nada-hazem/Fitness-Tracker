@@ -1,84 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/navbar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/hero.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/var.css') }}"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <title>MoveMate - Your Fitness Companion</title>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <p class="user-name">
-          <span>Welcome </span>{{ session['user']['username'] }}
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <p class="user-name">
+            <span>Welcome </span>{{ session['user']['username'] }}
+          </p>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu">
+          <li><a href="/create_activity" style="color: green">Home</a></li>
+          <li><a href="/create_activity">Create Activity</a></li>
+          <li><a href="/my_activities">My Activities</a></li>
+          <li><a href="/my_goals"> Goals</a></li>
+          <li class="nav-logout">
+            <form method="get" action="{{url_for('auth.logout')}}">
+              <input type="submit" value="Logout" class="logout-btn" />
+            </form>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to MoveMate</h1>
+        <p class="hero-subtitle">
+          Track, analyze, and achieve your fitness goals with MoveMate
         </p>
-      </div>
-      <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="navbar-menu">
-        <li><a href="/create_activity">Create Activity</a></li>
-        <li><a href="/my_activities">My Activities</a></li>
-        <li><a href="/my_goals"> Goals</a></li>
-        <li><a href="#"> Progress</a></li>
-        <li class="nav-logout">
-          <form method="get" action="{{url_for('auth.logout')}}">
-            <input type="submit" value="Logout" class="logout-btn" />
-          </form>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-<section class="hero">
-  <div class="hero-content">
-      <h1 class="hero-title">Transform Your Fitness Journey</h1>
-      <p class="hero-subtitle">Track, analyze, and achieve your fitness goals with MoveMate</p>
-      <div class="hero-stats">
+        <div class="hero-stats">
           <div class="stat-item">
-              <span class="stat-number">1000+</span>
-              <span class="stat-label">Active Users</span>
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">Active Users</span>
           </div>
           <div class="stat-item">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">Workout Types</span>
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Workout Types</span>
           </div>
           <div class="stat-item">
-              <span class="stat-number">24/7</span>
-              <span class="stat-label">Support</span>
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Support</span>
           </div>
+        </div>
+        <a href="/create_activity" class="hero-cta">Start Your Journey</a>
       </div>
-      <a href="/create_activity" class="hero-cta">Start Your Journey</a>
-  </div>
-  <div class="hero-shape"></div>
-</section>
+      <div class="hero-shape"></div>
+    </section>
 
     <div class="main">
-    
-        <h2>Discover Your Perfect Activities</h2>
-        <div id="activities-container"></div>
+      <h2>Discover Your Perfect Activities</h2>
+      <div id="activities-container"></div>
     </div>
-    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <div class="flash-messages">
-            {% for category, message in messages %}
-            <div class="flash-message {{ category }}">{{ message }}</div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    {% endwith %} -->
     <script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='js/navbar.js') }}" defer></script>
-
-
-</body>
+    <script
+      src="{{ url_for('static', filename='js/navbar.js') }}"
+      defer
+    ></script>
+  </body>
 </html>

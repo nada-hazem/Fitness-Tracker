@@ -1,6 +1,61 @@
 {
     "user_activities": {
-        "nadaayoub362@gmail.com": [],
+        "nadaayoub362@gmail.com": [
+            {
+                "calories_burned_per_hour": 200,
+                "category": "Flexibility",
+                "difficulty": "Low",
+                "duration_minutes": 60,
+                "id": "2",
+                "name": "Yoga",
+                "photo": "/static/images/yoga3.webp"
+            },
+            {
+                "calories_burned_per_hour": 600,
+                "category": "Cardio",
+                "difficulty": "Medium",
+                "duration_minutes": 30,
+                "id": "1",
+                "name": "Runninggg",
+                "photo": "/static/images/Run3.webp"
+            },
+            {
+                "calories_burned_per_hour": 88,
+                "category": "888",
+                "difficulty": "gggg",
+                "duration_minutes": 77,
+                "id": "9",
+                "image": "basketball-court-ball-and-sports-match-or-competi-2023-11-27-04-58-17-utc.jpg",
+                "name": "nnn"
+            },
+            {
+                "calories_burned_per_hour": 99,
+                "category": "aa",
+                "difficulty": "hhh",
+                "duration_minutes": 88,
+                "id": "8",
+                "image": "basketball-court-ball-and-sports-match-or-competi-2023-11-27-04-58-17-utc.jpg",
+                "name": "nada"
+            },
+            {
+                "calories_burned_per_hour": 999,
+                "category": "888",
+                "difficulty": "hhh",
+                "duration_minutes": 8888,
+                "id": "9",
+                "image": "basketball-court-ball-and-sports-match-or-competi-2023-11-27-04-58-17-utc.jpg",
+                "name": "nada"
+            },
+            {
+                "calories_burned_per_hour": 88,
+                "category": "hh8",
+                "difficulty": "hhh",
+                "duration_minutes": 88,
+                "id": "10",
+                "image": "basketball-court-ball-and-sports-match-or-competi-2023-11-27-04-58-17-utc.jpg",
+                "name": "hh"
+            }
+        ],
         "user_email": []
     }
 }

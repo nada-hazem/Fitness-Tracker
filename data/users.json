@@ -8,5 +8,10 @@
         "username": "ali",
         "email": "nana@gmail.com",
         "password": "$2b$12$uscpBx7Hqt6TvJs6ZZSfeelm1qJZOkVUaRl2har.9f5oo.fno1fDK"
+    },
+    {
+        "username": "nada",
+        "email": "nada@gmail.com",
+        "password": "$2b$12$y0nhCFlsfRZg1R0XSe4pyuF7KZ8L5pF2H2M8mgiV8aBOLqji1hVdO"
     }
 ]

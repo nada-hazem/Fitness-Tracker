@@ -1,79 +1,110 @@
+@import url('var.css');
+
 .analysis {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap:40px;
-}
-  
-  .stats-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 40%;
-  }
-  
-  .stat-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    border:rgba(0, 128, 0, 0.533) 1px solid;
-  }
-  
-  .stat-card h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #434040db;
-
-  }
-  
-  .stat-card p {
-    font-size: 20px;
-    font-weight: 400;
-    margin-top: 10px;
-    color: #59ab62;
-  }
-  
-  .chart-container {
-    width: 60%; /* Expands to 60% of the container */
-    display: flex;
-    justify-content: center; /* Keeps chart centered */
-    align-items: center;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border: rgba(0, 128, 0, 0.533) 1px solid;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
-/* Ensures the chart stays small inside the bigger container */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 40%;
+}
+
+.stat-card {
+  background: var(--neutral-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid var(--primary-light);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.stat-card p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.chart-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--primary-light);
+}
+
 .chart-container canvas {
-    max-width: 300px;  /* Prevents chart from growing */
-    max-height: 300px; /* Maintains reasonable height */
+  max-width: 300px;
+  max-height: 300px;
 }
-  
+
+.chart-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+@media (max-width: 1024px) {
+  .stats-and-chart-container {
+    flex-direction: column;
+  }
+
+  .stats-container,
+  .chart-container {
+    width: 100%;
+  }
+  .chart-container h2{
+    font-size: 20px;
+    margin-bottom: -20px;
+
+  }
+  .chart-container{
+    width:90%;
+    height:250px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+  .analysis{
+    width:40%;
+    margin-left:-10px;
+    gap:100px;
+  }
+  .chart-container{
+    width:80%;
+    height:180px;
+    flex-direction: column;
+  }
   .chart-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: -30px;
+    font-size: 10px;
+    width:50px;
+    color: var(--text-dark);
   }
-  
-  @media (max-width: 1024px) {
-    .stats-and-chart-container {
-      flex-direction: column;
-    }
-  
-    .stats-container,
-    .chart-container {
-      width: 100%;
-    }
+  .chart-container h2:after{
+display: none;
   }
-  
-  @media (max-width: 640px) {
-    .stats-container {
-      grid-template-columns: 1fr;
-    }
-  }
+
+}

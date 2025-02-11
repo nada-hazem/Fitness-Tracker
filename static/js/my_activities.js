@@ -24,7 +24,7 @@ function closeEditModal() {
 
 document
   .getElementById("editActivityForm")
-  .addEventListener("submit", function (event) {
+  .addEventListener("submit", (event) => {
     event.preventDefault();
 
     const updatedActivity = {
@@ -44,8 +44,8 @@ document
     })
       .then((response) => response.json())
       .then((data) => {
-        showNotification(data.message,"success");
-       
+        showNotification(data.message, "success");
+
         location.reload();
       })
       .catch((error) => console.error("Error:", error));
@@ -78,15 +78,24 @@ function addToGoals(activityId) {
     .then((response) => response.json())
     .then((data) => {
       if (data.message) {
-        showNotification(data.message, "success"); 
+        showNotification(data.message, "success");
+
+        const button = document.querySelector(
+          `.add-to-goals[data-id="${activityId}"]`
+        );
+        if (button) {
+          button.disabled = true;
+          button.textContent = "Added to Goals";
+        }
       }
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => {
+      console.error("Error:", error);
+      showNotification("Failed to add activity to goals", "error");
+    });
 }
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".add-to-goals").forEach((button) => {
     button.addEventListener("click", function () {
       const activityId = this.getAttribute("data-id");
@@ -112,14 +121,14 @@ function showNotification(message, type = "success") {
   notification.style.bottom = "20px";
   notification.style.right = "20px";
   notification.style.padding = "10px 20px";
-  notification.style.backgroundColor =  type === "success" ? "green" : type === "error" ? "red" : "red";
+  notification.style.backgroundColor =
+    type === "success" ? "green" : type === "error" ? "red" : "red";
   notification.style.color = "white";
   notification.style.borderRadius = "5px";
   notification.style.zIndex = "1000";
   notification.style.fontSize = "14px";
 
   document.body.appendChild(notification);
-
 
   setTimeout(() => {
     notification.remove();

@@ -45,8 +45,7 @@
           <li><a href="/auth/home">Home</a></li>
           <li><a href="/create_activity">Create Activity</a></li>
           <li><a href="/my_activities">My Activities</a></li>
-          <li><a href="/my_goals">Goals</a></li>
-          <li><a href="#">Progress</a></li>
+          <li><a href="/my_goals" style="color: green">Goals</a></li>
           <li class="nav-logout">
             <form method="get" action="{{url_for('auth.logout')}}">
               <input type="submit" value="Logout" class="logout-btn" />
@@ -59,32 +58,31 @@
     <div class="main">
       <h1>My Goals</h1>
       <div class="analysis">
-        
         <div class="stats-container">
-        <div class="stat-card">
+          <div class="stat-card">
             <h3>Total Activities</h3>
             <p id="total-activities">0</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3>Total Calories Per Hour</h3>
             <p id="total-calories">0</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3>Total Duration (Minutes)</h3>
             <p id="total-duration">0</p>
-        </div>
-        <div class="stat-card">
+          </div>
+          <div class="stat-card">
             <h3>Total Calories Burned</h3>
             <p id="total-burned">0</p>
+          </div>
         </div>
-        </div>
-        
+
         <div class="chart-container">
-            <h2 style="text-align: center;">Calories Burned by Activity</h2>
-            <canvas id="goalsChart"></canvas>
-            </div>
-    </div>
-    
+          <h2 style="text-align: center">Calories Burned by Activity</h2>
+          <canvas id="goalsChart"></canvas>
+        </div>
+      </div>
+
       <div id="my-activities-container">
         {% for activity in goals %}
         <div class="activity-card">
@@ -105,20 +103,29 @@
             <h3>{{ activity.name }}</h3>
             <div class="activity-details">
               <p><strong>Category:</strong> {{ activity.category }}</p>
-              <p><strong>Duration:</strong> {{ activity.duration_minutes }} min</p>
-              <p><strong>Calories Burned:</strong> {{ activity.calories_burned_per_hour }} cal/hour</p>
+              <p>
+                <strong>Duration:</strong> {{ activity.duration_minutes }} min
+              </p>
+              <p>
+                <strong>Calories Burned:</strong> {{
+                activity.calories_burned_per_hour }} cal/hour
+              </p>
               <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
             </div>
           </div>
 
-          <button class="rembtn" type="button" onclick="removeGoal('{{ activity.id }}', this)">
+          <button
+            class="rembtn"
+            type="button"
+            onclick="removeGoal('{{ activity.id }}', this)"
+          >
             Remove from Goals
           </button>
         </div>
         {% endfor %}
       </div>
     </div>
-   
+
     <script
       src="{{ url_for('static', filename='js/goals.js') }}"
       defer
@@ -128,7 +135,8 @@
       src="{{ url_for('static', filename='js/navbar.js') }}"
       defer
     ></script>
-    <script id="goals-data" type="application/json">{{ goals_json | safe }}</script>
-
+    <script id="goals-data" type="application/json">
+      {{ goals_json | safe }}
+    </script>
   </body>
 </html>

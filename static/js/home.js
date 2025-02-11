@@ -104,7 +104,7 @@ function toggleActivity(activityId, button) {
         button.classList.toggle("removeBtn");
         button.classList.toggle("addBtn");
 
-        showNotification(data.message,  isRemoving ? "info" : "success");
+        showNotification(data.message, isRemoving ? "info" : "success");
       }
     })
     .catch((error) => {
@@ -130,7 +130,8 @@ function showNotification(message, type = "success") {
   notification.style.bottom = "20px";
   notification.style.right = "20px";
   notification.style.padding = "10px 20px";
-  notification.style.backgroundColor =  type === "success" ? "green" : type === "error" ? "red" : "red";
+  notification.style.backgroundColor =
+    type === "success" ? "green" : type === "error" ? "red" : "red";
   notification.style.color = "white";
   notification.style.borderRadius = "5px";
   notification.style.zIndex = "1000";
@@ -138,9 +139,7 @@ function showNotification(message, type = "success") {
 
   document.body.appendChild(notification);
 
-
   setTimeout(() => {
     notification.remove();
   }, 3000);
 }
-
